@@ -1,0 +1,55 @@
+.hearts-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  top: -50px;
+
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  opacity: .8;
+
+  text-shadow:
+    0 0 8px currentColor,
+    0 0 16px currentColor;
+}
+
+@keyframes fall {
+
+  0% {
+    transform:
+      translateY(-50px)
+      translateX(0px)
+      rotate(0deg);
+
+    opacity:0;
+  }
+
+  10%{
+    opacity:.9;
+  }
+
+  50%{
+    transform:
+      translateY(50vh)
+      translateX(25px)
+      rotate(180deg);
+  }
+
+  100%{
+    transform:
+      translateY(110vh)
+      translateX(-25px)
+      rotate(360deg);
+
+    opacity:0;
+  }
+
+}

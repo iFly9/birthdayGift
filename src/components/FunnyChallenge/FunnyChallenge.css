@@ -1,0 +1,1984 @@
+/* =====================================
+   MAIN FULL SCREEN EXPERIENCE
+===================================== */
+
+
+.challenge-scene {
+
+    min-height:100vh;
+    width:100%;
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        rgba(255,215,120,.18),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at top,
+        rgba(255,180,80,.12),
+        transparent 40%
+    ),
+
+    linear-gradient(
+        135deg,
+        #05030d,
+        #12091f,
+        #020207
+    );
+
+
+    color:white;
+
+    font-family:
+    "Playfair Display",
+    serif;
+
+}
+
+
+
+
+
+/* =====================================
+   GOLD CENTER LIGHT
+===================================== */
+
+
+.gold-glow {
+
+
+    position:absolute;
+
+
+    width:650px;
+
+    height:650px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,215,120,.35),
+
+        transparent 70%
+
+    );
+
+
+    filter:blur(50px);
+
+
+    animation:
+
+    glowPulse 5s infinite alternate;
+
+
+}
+
+
+
+
+
+@keyframes glowPulse {
+
+
+    from {
+
+        transform:scale(.9);
+
+        opacity:.5;
+
+    }
+
+
+    to {
+
+        transform:scale(1.2);
+
+        opacity:1;
+
+    }
+
+}
+
+
+
+
+
+/* =====================================
+   PARTICLES
+===================================== */
+
+
+.particles {
+
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+
+
+
+
+.particle {
+
+
+    position:absolute;
+
+
+    bottom:-20px;
+
+
+    background:
+
+    radial-gradient(
+
+        circle,
+
+        #fff,
+
+        #ffd76a,
+
+        transparent
+
+    );
+
+
+    border-radius:50%;
+
+
+    animation:
+
+    floatParticle linear infinite;
+
+
+    opacity:.8;
+
+
+}
+
+
+
+
+@keyframes floatParticle {
+
+
+    0% {
+
+
+        transform:
+
+        translateY(0)
+
+        scale(1);
+
+
+        opacity:0;
+
+
+    }
+
+
+    20% {
+
+
+        opacity:1;
+
+    }
+
+
+
+    100% {
+
+
+        transform:
+
+        translateY(-110vh)
+
+        scale(1.8);
+
+
+        opacity:0;
+
+
+    }
+
+}
+/* =====================================
+   MAIN CONTENT AREA
+===================================== */
+
+
+.challenge-content {
+
+
+    position:relative;
+
+
+    z-index:5;
+
+
+    width:min(900px,90%);
+
+
+    min-height:100vh;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    padding:40px 20px;
+
+
+}
+
+
+
+
+
+/* =====================================
+   CROWN
+===================================== */
+
+
+.royal-crown {
+
+
+    font-size:70px;
+
+
+    margin-bottom:15px;
+
+
+    filter:
+
+    drop-shadow(
+        0 0 25px rgba(255,215,0,.8)
+    );
+
+
+}
+
+
+
+
+
+/* =====================================
+   SECURITY BADGE
+===================================== */
+
+
+.security-badge {
+
+
+    padding:10px 25px;
+
+
+    border-radius:50px;
+
+
+    margin-bottom:25px;
+
+
+    font-size:14px;
+
+
+    letter-spacing:2px;
+
+
+    text-transform:uppercase;
+
+
+    color:#ffe8a3;
+
+
+    background:
+
+
+    rgba(255,255,255,.08);
+
+
+
+    border:
+
+
+    1px solid
+
+    rgba(255,215,120,.35);
+
+
+
+    backdrop-filter:
+
+    blur(10px);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   MAIN TITLE
+===================================== */
+
+
+.main-title {
+
+
+    font-size:
+
+    clamp(2.2rem,5vw,4rem);
+
+
+
+    line-height:1.15;
+
+
+    margin:10px 0 25px;
+
+
+    font-weight:700;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        #fff4c2,
+
+        #ffd76a,
+
+        #fff
+
+    );
+
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+
+    text-shadow:
+
+
+    0 0 30px rgba(255,215,100,.35);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   QUESTION
+===================================== */
+
+
+.question {
+
+
+    font-size:
+
+    clamp(1.2rem,2.5vw,1.8rem);
+
+
+
+    line-height:1.6;
+
+
+    font-weight:400;
+
+
+    color:#f7f3e8;
+
+
+    margin-bottom:15px;
+
+
+
+}
+
+
+
+
+
+.question span {
+
+
+    display:inline-block;
+
+
+    margin-top:10px;
+
+
+    font-size:
+
+    clamp(1.5rem,3vw,2.2rem);
+
+
+
+    color:#ffd86b;
+
+
+    font-weight:700;
+
+
+    text-shadow:
+
+
+    0 0 25px rgba(255,200,80,.7);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   SMALL DESCRIPTION
+===================================== */
+
+
+.hint {
+
+
+    color:
+
+
+    rgba(255,255,255,.7);
+
+
+
+    font-size:1rem;
+
+
+    line-height:1.6;
+
+
+    margin-bottom:25px;
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   JOURNEY DOTS
+===================================== */
+
+
+.journey {
+
+
+    display:flex;
+
+
+    gap:10px;
+
+
+    margin:15px 0;
+
+
+
+}
+
+
+
+
+
+.journey-dot {
+
+
+    width:12px;
+
+
+    height:12px;
+
+
+    border-radius:50%;
+
+
+    background:
+
+
+    rgba(255,255,255,.2);
+
+
+
+    transition:.3s ease;
+
+
+
+}
+
+
+
+
+
+.journey-dot.active {
+
+
+    background:#ffd86b;
+
+
+    box-shadow:
+
+
+    0 0 15px #ffd86b;
+
+
+
+    transform:scale(1.3);
+
+
+}
+
+
+
+
+
+/* =====================================
+   FUNNY MESSAGE
+===================================== */
+
+
+.funny-reply {
+
+
+    min-height:35px;
+
+
+    margin:15px;
+
+
+    color:#ffd86b;
+
+
+    font-size:1.2rem;
+
+
+    font-weight:600;
+
+
+
+}
+/* =====================================
+   BUTTON AREA
+===================================== */
+
+
+.answer-zone {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    gap:35px;
+
+
+    margin-top:20px;
+
+
+    position:relative;
+
+
+    min-height:90px;
+
+
+}
+
+
+
+
+
+/* =====================================
+   YES BUTTON
+===================================== */
+
+
+.magic-yes {
+
+
+    position:relative;
+
+
+    z-index:3;
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    cursor:pointer;
+
+
+
+    padding:18px 55px;
+
+
+    border-radius:60px;
+
+
+
+    font-size:1.3rem;
+
+
+    font-weight:700;
+
+
+
+    color:#2b1700;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #fff2a8,
+
+        #ffd34d,
+
+        #ffb300
+
+    );
+
+
+
+    box-shadow:
+
+
+    0 0 25px rgba(255,215,80,.6);
+
+
+
+    transition:.3s ease;
+
+
+
+}
+
+
+
+
+
+.magic-yes:hover {
+
+
+    transform:translateY(-5px);
+
+
+    box-shadow:
+
+
+    0 0 45px rgba(255,215,80,1);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   NO BUTTON
+===================================== */
+
+
+.escape-container {
+
+
+    position:relative;
+
+
+    z-index:4;
+
+
+
+}
+
+
+
+
+
+.funny-no {
+
+
+
+    border:none;
+
+
+    outline:none;
+
+
+    cursor:pointer;
+
+
+
+    padding:18px 55px;
+
+
+    border-radius:60px;
+
+
+
+    font-size:1.3rem;
+
+
+    font-weight:700;
+
+
+
+    color:white;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        135deg,
+
+        #5b1435,
+
+        #a52a5a
+
+    );
+
+
+
+    border:
+
+
+    1px solid rgba(255,255,255,.25);
+
+
+
+    box-shadow:
+
+
+    0 0 25px rgba(255,80,150,.4);
+
+
+
+    transition:.3s ease;
+
+
+
+}
+
+
+
+
+
+.funny-no:hover {
+
+
+    box-shadow:
+
+
+    0 0 45px rgba(255,80,150,.8);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   MUSIC NOTES
+===================================== */
+
+
+.music-notes {
+
+
+    position:absolute;
+
+
+    inset:0;
+
+
+    pointer-events:none;
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+.music-note {
+
+
+    position:absolute;
+
+
+    bottom:-50px;
+
+
+
+    left:
+
+    calc(
+      10% + var(--i)
+    );
+
+
+
+    font-size:40px;
+
+
+
+    color:
+
+
+    rgba(255,215,120,.45);
+
+
+
+    filter:
+
+
+    drop-shadow(
+
+      0 0 15px gold
+
+    );
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   PIANO STAGE
+===================================== */
+
+
+.piano-stage {
+
+
+    margin-top:45px;
+
+
+    position:relative;
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+
+
+}
+
+
+
+
+
+.piano-light {
+
+
+    position:absolute;
+
+
+    width:280px;
+
+
+    height:100px;
+
+
+    top:-20px;
+
+
+
+    background:
+
+
+    radial-gradient(
+
+        ellipse,
+
+        rgba(255,215,100,.5),
+
+        transparent 70%
+
+    );
+
+
+
+    filter:blur(25px);
+
+
+
+}
+
+
+
+
+
+/* Mini Piano */
+
+.mini-piano {
+
+
+    width:260px;
+
+
+    height:90px;
+
+
+    position:relative;
+
+
+    background:
+
+
+    linear-gradient(
+
+        180deg,
+
+        #222,
+
+        #050505
+
+    );
+
+
+
+    border-radius:10px 10px 25px 25px;
+
+
+
+    box-shadow:
+
+
+    0 20px 50px rgba(0,0,0,.8),
+
+
+    0 0 30px rgba(255,215,100,.3);
+
+
+
+    overflow:hidden;
+
+
+
+}
+
+
+
+
+
+.white-keys {
+
+
+    position:absolute;
+
+
+    bottom:0;
+
+
+    left:10px;
+
+
+    right:10px;
+
+
+    height:60px;
+
+
+    display:flex;
+
+
+
+}
+
+
+
+
+
+.white-keys span {
+
+
+    flex:1;
+
+
+    background:#fff;
+
+
+    border-right:1px solid #aaa;
+
+
+
+}
+
+
+
+
+
+.black-keys {
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:35px;
+
+
+    width:190px;
+
+
+    height:35px;
+
+
+
+    display:flex;
+
+
+    justify-content:space-around;
+
+
+    z-index:2;
+
+
+
+}
+
+
+
+
+
+.black-keys span {
+
+
+    width:18px;
+
+
+    height:35px;
+
+
+    background:#111;
+
+
+    border-radius:0 0 5px 5px;
+
+
+
+}
+
+
+
+
+
+.piano-caption {
+
+
+    margin-top:20px;
+
+
+    color:#ffe8a0;
+
+
+    font-size:1rem;
+
+
+    letter-spacing:1px;
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   GOLD WAVE
+===================================== */
+
+
+.gold-wave {
+
+
+    position:absolute;
+
+
+    bottom:0;
+
+
+    left:0;
+
+
+    width:100%;
+
+
+    height:80px;
+
+
+    display:flex;
+
+
+    justify-content:space-around;
+
+
+    opacity:.4;
+
+
+
+}
+
+
+
+
+
+.gold-wave span {
+
+
+    width:35%;
+
+
+    height:100%;
+
+
+
+    background:
+
+
+    radial-gradient(
+
+        ellipse,
+
+        rgba(255,215,100,.3),
+
+        transparent 70%
+
+    );
+
+
+}
+/* =====================================
+   SUCCESS SCREEN
+===================================== */
+
+
+.success-screen {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    z-index:50;
+
+
+
+    display:flex;
+
+
+    flex-direction:column;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+
+    text-align:center;
+
+
+
+    background:
+
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,215,100,.35),
+
+        transparent 40%
+
+    ),
+
+
+    linear-gradient(
+
+        135deg,
+
+        #12051f,
+
+        #020107
+
+    );
+
+
+
+    backdrop-filter:blur(15px);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   CONFETTI PIECES
+===================================== */
+
+
+.celebration-piece {
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+
+    width:10px;
+
+
+    height:20px;
+
+
+
+    border-radius:3px;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        180deg,
+
+        #ffd86b,
+
+        #ff7eb3
+
+    );
+
+
+
+    box-shadow:
+
+
+    0 0 10px rgba(255,215,100,.8);
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   GIFT
+===================================== */
+
+
+.surprise-gift {
+
+
+    font-size:120px;
+
+
+    margin-bottom:25px;
+
+
+
+    filter:
+
+
+    drop-shadow(
+
+        0 0 35px rgba(255,215,100,.8)
+
+    );
+
+
+
+    animation:
+
+
+    giftBounce 2s infinite;
+
+
+
+}
+
+
+
+
+
+@keyframes giftBounce {
+
+
+    0%,100% {
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+
+    50% {
+
+
+        transform:translateY(-20px);
+
+
+    }
+
+
+}
+
+
+
+
+
+/* =====================================
+   SUCCESS TITLE
+===================================== */
+
+
+.success-screen h2 {
+
+
+    font-size:
+
+
+    clamp(2rem,5vw,3.5rem);
+
+
+
+    margin-bottom:15px;
+
+
+
+    background:
+
+
+    linear-gradient(
+
+        90deg,
+
+        #fff,
+
+        #ffd86b,
+
+        #fff
+
+    );
+
+
+
+    -webkit-background-clip:text;
+
+
+    color:transparent;
+
+
+
+    text-shadow:
+
+
+    0 0 30px rgba(255,215,100,.5);
+
+
+
+}
+
+
+
+
+
+.success-screen p {
+
+
+    color:
+
+
+    rgba(255,255,255,.8);
+
+
+
+    font-size:1.2rem;
+
+
+    letter-spacing:1px;
+
+
+
+}
+
+
+
+
+
+/* =====================================
+   EXTRA SUCCESS SPARKLE
+===================================== */
+
+
+.success-screen::before {
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    width:400px;
+
+
+    height:400px;
+
+
+    border-radius:50%;
+
+
+
+    background:
+
+
+    radial-gradient(
+
+        circle,
+
+        rgba(255,215,100,.3),
+
+        transparent 70%
+
+    );
+
+
+
+    animation:
+
+
+    successGlow 4s infinite;
+
+
+
+}
+
+
+
+
+
+@keyframes successGlow {
+
+
+    0% {
+
+
+        transform:scale(.8);
+
+
+        opacity:.5;
+
+
+    }
+
+
+
+    50% {
+
+
+        transform:scale(1.2);
+
+
+        opacity:1;
+
+
+    }
+
+
+
+    100% {
+
+
+        transform:scale(.8);
+
+
+        opacity:.5;
+
+
+    }
+
+
+}
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+
+/* Laptop / Desktop */
+
+@media (max-width:1200px){
+
+
+    .challenge-content {
+
+        width:90%;
+
+        padding:30px 15px;
+
+    }
+
+
+
+    .royal-crown {
+
+        font-size:60px;
+
+    }
+
+
+
+    .piano-stage {
+
+        margin-top:35px;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* Tablet */
+
+@media (max-width:768px){
+
+
+
+    .challenge-scene {
+
+        overflow-y:auto;
+
+        align-items:flex-start;
+
+    }
+
+
+
+    .challenge-content {
+
+
+        min-height:100vh;
+
+        justify-content:center;
+
+
+        padding:
+
+        50px 20px 120px;
+
+
+    }
+
+
+
+    .royal-crown {
+
+
+        font-size:50px;
+
+
+    }
+
+
+
+    .security-badge {
+
+
+        font-size:.75rem;
+
+        padding:8px 18px;
+
+
+    }
+
+
+
+    .main-title {
+
+
+        font-size:2.2rem;
+
+
+    }
+
+
+
+    .question {
+
+
+        font-size:1.15rem;
+
+
+    }
+
+
+
+    .question span {
+
+
+        font-size:1.5rem;
+
+
+    }
+
+
+
+    .answer-zone {
+
+
+        gap:20px;
+
+        flex-direction:column;
+
+
+        min-height:150px;
+
+
+    }
+
+
+
+
+    .magic-yes,
+
+    .funny-no {
+
+
+        width:220px;
+
+
+        padding:16px 35px;
+
+
+        font-size:1.1rem;
+
+
+    }
+
+
+
+
+
+    .piano-stage {
+
+
+        margin-top:25px;
+
+
+    }
+
+
+
+    .mini-piano {
+
+
+        width:220px;
+
+        height:75px;
+
+
+    }
+
+
+
+    .piano-caption {
+
+
+        font-size:.85rem;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+/* Small Mobile */
+
+@media (max-width:480px){
+
+
+
+    .challenge-content {
+
+
+        padding-left:15px;
+
+        padding-right:15px;
+
+
+    }
+
+
+
+
+    .main-title {
+
+
+        font-size:1.8rem;
+
+
+    }
+
+
+
+
+
+    .question {
+
+
+        line-height:1.5;
+
+
+    }
+
+
+
+
+
+    .journey {
+
+
+        gap:7px;
+
+
+    }
+
+
+
+
+    .journey-dot {
+
+
+        width:9px;
+
+        height:9px;
+
+
+    }
+
+
+
+
+
+    .magic-yes,
+
+    .funny-no {
+
+
+        width:190px;
+
+
+        padding:14px;
+
+
+        font-size:1rem;
+
+
+    }
+
+
+
+
+
+    .mini-piano {
+
+
+        width:190px;
+
+
+    }
+
+
+
+
+
+    .surprise-gift {
+
+
+        font-size:90px;
+
+
+    }
+
+
+
+    .success-screen h2 {
+
+
+        font-size:2rem;
+
+
+        padding:0 20px;
+
+
+    }
+
+
+}
+
+
+
+
+
+
+
+/* Small Height Screens
+   Example: Laptop with browser zoom
+*/
+
+
+@media (max-height:700px){
+
+
+
+    .challenge-content {
+
+
+        justify-content:flex-start;
+
+
+        padding-top:30px;
+
+
+    }
+
+
+
+    .royal-crown {
+
+
+        font-size:45px;
+
+
+    }
+
+
+
+    .piano-stage {
+
+
+        transform:scale(.85);
+
+
+    }
+
+
+}

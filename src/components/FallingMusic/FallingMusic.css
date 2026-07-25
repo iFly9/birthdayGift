@@ -1,0 +1,80 @@
+.music-rain{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+/* Each Instrument */
+
+.music-item{
+
+    position:absolute;
+
+    top:-120px;
+
+    animation:fall 3s linear infinite;
+
+   filter:none;
+
+    user-select:none;
+
+    will-change:transform;
+}
+
+/* Falling Animation */
+
+@keyframes fall{
+
+0%{
+
+    transform:
+        translateY(-150px)
+        rotate(0deg)
+        translateX(0);
+
+}
+
+25%{
+
+    transform:
+        translateY(30vh)
+        rotate(80deg)
+        translateX(-20px);
+
+}
+
+50%{
+
+    transform:
+        translateY(60vh)
+        rotate(180deg)
+        translateX(25px);
+
+}
+
+75%{
+
+    transform:
+        translateY(90vh)
+        rotate(280deg)
+        translateX(-15px);
+
+}
+
+100%{
+
+    transform:
+        translateY(120vh)
+        rotate(360deg)
+        translateX(20px);
+
+}
+
+}

@@ -1,0 +1,286 @@
+/* ===========================
+   WRAPPER
+=========================== */
+.envelope-wrapper{
+
+    position:absolute;
+
+    left:58%;
+
+    bottom:280px;
+
+    transform:translateX(-50%) rotate(-10deg);
+
+    z-index:101;
+
+    pointer-events:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+/* ===========================
+   ENVELOPE
+=========================== */
+.envelope{
+
+    position:relative;
+
+    width:180px;
+
+    height:120px;
+
+    cursor:pointer;
+
+    pointer-events:auto;
+}
+
+
+/* ===========================
+   BACK
+=========================== */
+
+.env-back{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:8px;
+
+    background:linear-gradient(
+
+        145deg,
+
+        #fffdf8,
+
+        #efe2c7
+
+    );
+
+    border:2px solid #d4b06b;
+
+}
+
+
+/* ===========================
+   LETTER
+=========================== */
+
+.letter{
+
+    position:absolute;
+
+    width:150px;
+
+    height:95px;
+
+    left:15px;
+
+    top:10px;
+
+    background:white;
+
+    border-radius:5px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:40px;
+
+    color:#b88d2d;
+
+    box-shadow:
+
+        inset 0 0 10px rgba(0,0,0,.06);
+
+}
+
+
+/* ===========================
+   LEFT FOLD
+=========================== */
+
+.fold-left{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:50%;
+
+    height:100%;
+
+    background:#ecd7ad;
+
+    clip-path:polygon(0 100%,100% 50%,100% 100%);
+
+}
+
+
+/* ===========================
+   RIGHT FOLD
+=========================== */
+
+.fold-right{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:0;
+
+    width:50%;
+
+    height:100%;
+
+    background:#e5cca0;
+
+    clip-path:polygon(0 50%,100% 100%,0 100%);
+
+}
+
+
+/* ===========================
+   TOP FLAP
+=========================== */
+
+.top-flap{
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:70px;
+
+    background:linear-gradient(
+
+        to bottom,
+
+        #f8e9ca,
+
+        #dcbc84
+
+    );
+
+    clip-path:polygon(0 0,50% 100%,100% 0);
+
+}
+
+
+/* ===========================
+   SEAL
+=========================== */
+
+.seal{
+
+    position:absolute;
+
+    left:50%;
+
+    top:38px;
+
+    transform:translateX(-50%);
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+
+        circle,
+
+        #e8c86f,
+
+        #9a6d17
+
+    );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    box-shadow:
+
+        0 0 18px rgba(255,215,0,.4);
+
+}
+
+
+/* ===========================
+   TEXT
+=========================== */
+
+.click-text{
+
+    margin-top:20px;
+
+    color:#d4af37;
+
+    font-family:var(--hand);
+
+    font-size:30px;
+
+    text-shadow:
+
+        0 0 12px rgba(212,175,55,.35);
+
+    animation:pulse 2s infinite;
+
+}
+
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes pulse{
+
+0%{
+
+opacity:.45;
+
+transform:translateY(0);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:translateY(-4px);
+
+}
+
+100%{
+
+opacity:.45;
+
+transform:translateY(0);
+
+}
+
+}

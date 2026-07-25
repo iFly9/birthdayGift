@@ -1,0 +1,208 @@
+.birthday-page{
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    background:#040404;
+}
+
+/* Background */
+
+.bg-gradient{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at 50% 20%,
+        rgba(255,210,80,.15),
+        transparent 45%),
+
+        radial-gradient(circle at 20% 70%,
+        rgba(255,255,255,.04),
+        transparent 35%),
+
+        radial-gradient(circle at 80% 40%,
+        rgba(255,180,0,.08),
+        transparent 30%);
+
+    /* filter:blur(100px); */
+
+    animation:bgMove 20s ease-in-out infinite alternate;
+
+}
+
+/* Spotlight */
+
+.spotlight{
+
+    position:absolute;
+
+    width:900px;
+
+    height:900px;
+
+    left:50%;
+
+    top:-400px;
+
+    transform:translateX(-50%);
+
+    background:
+        radial-gradient(circle,
+        rgba(255,220,120,.25),
+        transparent 70%);
+
+    /* filter:blur(70px); */
+
+}
+
+/* Fog */
+
+.fog{
+
+    position:absolute;
+
+    width:160%;
+
+    height:500px;
+
+    background:
+        radial-gradient(circle,
+        rgba(255,255,255,.03),
+        transparent 70%);
+
+    /* filter:blur(120px); */
+
+}
+
+.fog1{
+
+    bottom:-150px;
+
+    animation:fogMove1 18s linear infinite;
+}
+
+.fog2{
+
+    top:20%;
+
+    animation:fogMove2 22s linear infinite;
+}
+
+/* Particles */
+
+.particles{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+.particle{
+
+    position:absolute;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#d4af37;
+
+    box-shadow:0 0 12px #d4af37;
+
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+
+0%{
+
+transform:
+translateY(110vh);
+
+opacity:0;
+
+}
+
+25%{
+
+opacity:.6;
+
+}
+
+75%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:
+translateY(-20vh);
+
+opacity:0;
+
+}
+
+}
+
+@keyframes bgMove{
+
+from{
+
+transform:scale(1);
+
+}
+
+to{
+
+transform:scale(1.15);
+
+}
+
+}
+
+@keyframes fogMove1{
+
+from{
+
+transform:translateX(-15%);
+
+}
+
+to{
+
+transform:translateX(15%);
+
+}
+
+}
+
+@keyframes fogMove2{
+
+from{
+
+transform:translateX(15%);
+
+}
+
+to{
+
+transform:translateX(-15%);
+
+}
+
+}

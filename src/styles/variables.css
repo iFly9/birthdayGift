@@ -1,0 +1,26 @@
+:root{
+
+  /* Colors */
+
+  --bg:#0F0F10;
+  --paper:#F6F2EA;
+  --gold:#C9A86A;
+  --accent:#B48A50;
+  --brown:#5C4632;
+
+  --text:#ECE7DD;
+  --text-dark:#2E2E2E;
+
+  /* Fonts */
+
+  --heading:'Cormorant Garamond', serif;
+  --body:'Inter', sans-serif;
+  --letter:'Caveat', cursive;
+
+  /* Sizes */
+
+  --radius:20px;
+  --transition:.35s ease;
+  --shadow:0 20px 50px rgba(0,0,0,.45);
+
+}

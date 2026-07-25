@@ -1,0 +1,139 @@
+.gallery-page{
+
+    position:relative;
+    width:100%;
+    min-height:100vh;
+
+    overflow:visible;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* Dark Overlay */
+
+.gallery-overlay{
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:5;
+}
+
+/* Center Text */
+
+.gallery-center{
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 30;
+    pointer-events: none;
+    left: 50%;
+    top: 50%;
+}
+
+.gallery-center h1{
+
+    color:#f8f2e7;
+
+    font-size:2rem;
+
+    font-family:"Cormorant Garamond", serif;
+
+    margin-top:15px;
+    margin-bottom:20px;
+
+    line-height:1.1;
+}
+
+.gallery-center p{
+
+    color:#d6b46c;
+
+    letter-spacing:5px;
+
+    font-size:1rem;
+
+    text-transform:uppercase;
+}
+
+.heart{
+
+    font-size:60px;
+
+    animation:heartbeat 1.8s infinite;
+}
+
+@keyframes heartbeat{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.18);
+
+}
+
+}
+.feedback-btn{
+
+    padding:18px 38px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #c8a84d,
+        #e8cf72
+    );
+
+    box-shadow:
+    0 0 30px rgba(255,215,0,.35);
+
+    transition:.35s;
+
+}
+
+.feedback-btn:hover{
+
+    transform:translateY(-5px) scale(1.05);
+
+    box-shadow:
+    0 0 45px rgba(255,215,0,.65);
+
+}
+
+.feedback-btn-wrapper{
+    position: fixed;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:99999;
+}
+/* .gallery-blur{
+
+    filter: blur(6px);
+
+    pointer-events:none;
+
+    user-select:none;
+
+} */

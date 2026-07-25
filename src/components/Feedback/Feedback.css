@@ -1,0 +1,511 @@
+/* ===========================
+   Overlay
+=========================== */
+
+.feedback-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 20px;
+
+    overflow-y: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ===========================
+   Background Blur
+=========================== */
+
+.feedback-backdrop{
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    /* backdrop-filter:blur(12px); */
+
+    animation:fadeBackdrop .5s ease;
+
+     backdrop-filter:blur(18px);
+}
+
+/* ===========================
+   Floating Card
+=========================== */
+.feedback-modal {
+
+    position: relative;
+    z-index: 2;
+
+    width: min(720px, 95vw);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 45px;
+
+    border-radius: 30px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(18,18,18,.96),
+        rgba(32,32,32,.97)
+    );
+
+    border: 2px solid rgba(212,175,55,.8);
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.7),
+        0 0 40px rgba(212,175,55,.25);
+
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 transparent;
+}
+.feedback-modal::-webkit-scrollbar{
+    width:8px;
+}
+
+.feedback-modal::-webkit-scrollbar-thumb{
+    background:#d4af37;
+    border-radius:20px;
+}
+
+.feedback-modal::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+/* Gold Shine */
+
+.feedback-modal::before{
+
+content:"";
+
+position:absolute;
+
+top:-120%;
+
+left:-40%;
+
+width:70%;
+
+height:320%;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.08),
+
+transparent
+
+);
+
+transform:rotate(25deg);
+
+animation:shine 8s linear infinite;
+
+pointer-events:none;
+
+}
+
+/* ===========================
+ Floating Wrapper
+=========================== */
+
+.floating-wrapper{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding-bottom:20px;
+
+}
+
+/* ===========================
+ Heading
+=========================== */
+
+.feedback-modal h1{
+
+font-size:2.7rem;
+
+margin-bottom:12px;
+
+color:#f7da83;
+
+font-family:Georgia,serif;
+
+text-shadow:
+
+0 0 18px rgba(212,175,55,.4);
+
+}
+
+.feedback-modal p{
+
+font-size:18px;
+
+margin-bottom:35px;
+
+color:#ececec;
+
+line-height:1.7;
+
+}
+
+/* ===========================
+ Inputs
+=========================== */
+
+.feedback-modal input,
+.feedback-modal textarea,
+.feedback-modal select{
+
+width:100%;
+
+padding:17px;
+
+margin:14px 0;
+
+border-radius:15px;
+
+border:2px solid rgba(212,175,55,.55);
+
+background:#fffdf8;
+
+font-size:17px;
+
+color:#4a3515;
+
+transition:.35s;
+
+}
+
+.feedback-modal textarea{
+
+resize:none;
+
+height:170px;
+
+}
+
+.feedback-modal input:focus,
+.feedback-modal textarea:focus,
+.feedback-modal select:focus{
+
+outline:none;
+
+border-color:#f5d87a;
+
+box-shadow:
+
+0 0 20px rgba(212,175,55,.45);
+
+}
+
+/* ===========================
+ Button
+=========================== */
+
+.send-btn{
+
+margin-top:25px;
+
+padding:18px 60px;
+
+border:none;
+
+border-radius:50px;
+
+font-size:18px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#8f6300,
+
+#f5d46b,
+
+#8f6300
+
+);
+
+background-size:250%;
+
+color:white;
+
+transition:.45s;
+
+}
+
+.send-btn:hover{
+
+background-position:right;
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 10px 35px rgba(212,175,55,.45);
+
+}
+
+/* ===========================
+ Success
+=========================== */
+
+.feedback-success{
+
+font-size:26px;
+
+padding:35px 0;
+
+color:#ffd978;
+
+line-height:1.8;
+
+}
+
+/* ===========================
+ Share
+=========================== */
+
+.share-title{
+
+margin-top:40px;
+
+font-size:24px;
+
+color:#f5d46d;
+
+margin-bottom:18px;
+
+}
+
+.share-icons{
+
+display:flex;
+
+justify-content:center;
+
+gap:18px;
+
+align-items:center;
+
+}
+
+.copy-link{
+
+width:54px;
+
+height:54px;
+
+border:none;
+
+border-radius:50%;
+
+background:#d4af37;
+
+color:white;
+
+font-size:20px;
+
+cursor:pointer;
+
+transition:.35s;
+
+}
+
+.copy-link:hover{
+
+transform:scale(1.12);
+
+}
+
+/* ===========================
+ Close
+=========================== */
+
+.close-modal{
+
+position:absolute;
+
+top:20px;
+
+right:20px;
+
+width:42px;
+
+height:42px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2a2a2a;
+
+color:#ffd978;
+
+cursor:pointer;
+
+font-size:18px;
+
+transition:.35s;
+
+}
+
+.close-modal:hover{
+
+transform:rotate(180deg);
+
+background:#d4af37;
+
+color:black;
+
+}
+
+/* ===========================
+ Animations
+=========================== */
+
+@keyframes shine{
+
+0%{
+
+transform:
+
+translateX(-220%)
+
+rotate(25deg);
+
+}
+
+100%{
+
+transform:
+
+translateX(320%)
+
+rotate(25deg);
+
+}
+
+}
+
+@keyframes fadeBackdrop{
+
+from{
+
+opacity:0;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}
+
+/* ===========================
+ Mobile
+=========================== */
+
+@media(max-width:768px){
+
+.feedback-modal{
+
+padding:30px 22px;
+
+width:92%;
+
+}
+
+.feedback-modal h1{
+
+font-size:2rem;
+
+}
+
+.feedback-modal p{
+
+font-size:15px;
+
+}
+
+.feedback-modal textarea{
+
+height:130px;
+
+}
+
+.share-icons{
+
+gap:12px;
+
+}
+
+.send-btn{
+
+width:100%;
+
+padding:16px;
+
+}
+
+}
+@media (max-width:768px){
+
+.feedback-modal{
+
+    width:95%;
+
+    max-height:92vh;
+
+    padding:28px 22px;
+
+}
+
+.feedback-modal h1{
+
+    font-size:2rem;
+
+}
+
+.feedback-modal textarea{
+
+    height:150px;
+
+}
+
+.send-btn{
+
+    width:100%;
+
+}
+
+}

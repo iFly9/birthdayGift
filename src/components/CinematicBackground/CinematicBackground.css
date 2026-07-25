@@ -1,0 +1,757 @@
+/* ==========================================================
+   CINEMATIC BACKGROUND v1.0
+   Foundation Styles
+========================================================== */
+
+.cinematic-bg{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+    background:
+        radial-gradient(circle at center,#1b1b1b 0%,#090909 45%,#000 100%);
+}
+
+/* ===================== STARS ====================== */
+
+.stars{
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(circle,#fff 1px,transparent 1px),
+      radial-gradient(circle,#f5d57a 1px,transparent 1px);
+    background-size:180px 180px,260px 260px;
+    opacity:.15;
+    animation:starsMove 90s linear infinite;
+     z-index:1;
+}
+
+/* ===================== GLOW ======================= */
+
+.center-glow{
+     z-index:2;
+    position:absolute;
+    left:50%;
+    top:38%;
+    transform:translate(-50%,-50%);
+    width:520px;
+    height:520px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(255,215,120,.18),
+        rgba(255,180,80,.08),
+        transparent 72%);
+      opacity:.8;
+    animation:glowPulse 8s ease-in-out infinite;
+}
+
+/* ===================== LIGHTS ===================== */
+
+.stage-lights{position:absolute;inset:0;  z-index:3;}
+
+.lamp{
+    position:absolute;
+    width:18px;height:18px;
+    border-radius:50%;
+    background:#ffe8a3;
+    box-shadow:0 0 15px #ffd76b,0 0 35px #ffd76b,0 0 70px #ffd76b;
+}
+
+.lamp-left{left:18%;top:18px;}
+.lamp-center{left:50%;top:8px;transform:translateX(-50%);}
+.lamp-right{right:18%;top:18px;}
+
+.light{
+    position:absolute;
+    top:10px;
+    width:320px;
+    height:900px;
+    clip-path:polygon(48% 0%,52% 0%,100% 100%,0% 100%);
+    background:linear-gradient(to bottom,
+        rgba(255,240,180,.35),
+        rgba(255,215,120,.08),
+        transparent);
+    filter:blur(18px);
+    opacity:.55;
+    mix-blend-mode:screen;
+}
+
+.left-light{left:10%;transform:rotate(10deg);animation:leftBeam 8s ease-in-out infinite;}
+.center-light{left:50%;transform:translateX(-50%);animation:centerBeam 7s ease-in-out infinite;}
+.right-light{right:10%;transform:rotate(-10deg);animation:rightBeam 9s ease-in-out infinite;}
+
+/* ===================== FOG ======================== */
+
+.fog{
+    position:absolute;
+    width:1200px;
+    height:1200px;
+    border-radius:50%;
+    filter:blur(30px);
+    mix-blend-mode:screen;
+    z-index:5;
+}
+
+.fog1{background:rgba(255,255,255,.05);left:-400px;top:-350px;animation:fogOne 30s linear infinite alternate;}
+.fog2{background:rgba(255,220,150,.06);right:-350px;bottom:-350px;animation:fogTwo 35s linear infinite alternate;}
+.fog3{background:rgba(255,170,70,.05);left:35%;top:20%;animation:fogThree 32s linear infinite alternate;}
+
+/* ===================== PIANO PLACEHOLDER ======================== */
+
+.piano-placeholder{
+    position:absolute;
+    left:50%;
+    bottom:140px;
+    transform:translateX(-50%);
+    width:420px;
+    height:150px;
+    border-radius:220px 220px 30px 30px;
+    background:linear-gradient(180deg,#151515,#000);
+    box-shadow:0 0 35px rgba(255,210,120,.15);
+    opacity:.6;
+}
+
+/* ===================== STAGE ====================== */
+/* ==========================================
+   ROYAL STAGE
+========================================== */
+
+.stage-floor{
+
+position:absolute;
+z-index:1;
+left:50%;
+
+bottom:-34%;
+
+transform:
+translateX(-50%)
+perspective(1500px)
+rotateX(78deg);
+
+width:230%;
+height:650px;
+
+border-top:
+2px solid rgba(255,220,180,.3);
+
+background:
+
+linear-gradient(
+180deg,
+rgba(255,255,255,.03),
+transparent 20%
+),
+
+repeating-linear-gradient(
+90deg,
+
+#2c170d 0px,
+
+#5b3417 60px,
+
+#754b25 120px,
+
+#3c2113 180px
+
+);
+
+box-shadow:
+
+inset 0 0 180px rgba(0,0,0,.85),
+
+0 -40px 100px rgba(255,180,80,.15);
+
+}
+
+/* ===================== ANIMATIONS ================= */
+
+@keyframes starsMove{
+from{background-position:0 0,0 0;}
+to{background-position:400px 300px,-250px 250px;}
+}
+
+@keyframes glowPulse{
+0%,100%{transform:translate(-50%,-50%) scale(.9);opacity:.45;}
+50%{transform:translate(-50%,-50%) scale(1.15);opacity:.8;}
+}
+
+@keyframes leftBeam{50%{transform:rotate(16deg);}}
+@keyframes rightBeam{50%{transform:rotate(-16deg);}}
+
+@keyframes centerBeam{
+0%,100%{transform:translateX(-50%) scaleY(1);opacity:.45;}
+50%{transform:translateX(-50%) scaleY(1.08);opacity:.8;}
+}
+
+@keyframes fogOne{
+to{transform:translate(220px,120px) scale(1.2);}
+}
+@keyframes fogTwo{
+to{transform:translate(-220px,-150px) scale(1.25);}
+}
+@keyframes fogThree{
+50%{transform:translate(-100px,60px);}
+100%{transform:translate(80px,-100px);}
+}
+
+/* ===================== RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+.center-glow{
+width:340px;
+height:340px;
+}
+
+.light{
+width:180px;
+height:650px;
+}
+
+.stage-floor{
+height:350px;
+bottom:-34%;
+}
+
+.piano-placeholder{
+width:260px;
+height:90px;
+bottom:120px;
+}
+
+}
+/* ==========================================================
+   DUST PARTICLES
+========================================================== */
+
+.dust-container{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:4;
+
+}
+
+.dust{
+
+    position:absolute;
+
+    bottom:-20px;
+
+    width:4px;
+
+    height:4px;
+
+    border-radius:50%;
+
+    background:#ffe6a3;
+
+    box-shadow:
+        0 0 6px #ffe6a3,
+        0 0 18px #ffd76b;
+
+    opacity:0;
+
+    animation:floatDust linear infinite;
+
+}
+
+@keyframes floatDust{
+
+0%{
+
+transform:translateY(0);
+
+opacity:0;
+
+}
+
+15%{
+
+opacity:.8;
+
+}
+
+80%{
+
+opacity:.4;
+
+}
+
+100%{
+
+transform:translateY(-110vh);
+
+opacity:0;
+
+}
+
+}
+/* ==========================================================
+   GRAND PIANO
+========================================================== */
+.grand-piano{
+
+    position:absolute;
+
+    left:25%;
+
+    bottom:30px;
+
+    width:650px;
+
+    transform:translateX(-50%);
+
+    z-index:20;
+
+    pointer-events:none;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.grand-piano svg{
+
+width:100%;
+
+height:auto;
+
+display:block;
+
+}
+
+@media(max-width:900px){
+
+.grand-piano{
+
+width:520px;
+
+bottom:100px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.grand-piano{
+
+width:340px;
+
+bottom:80px;
+
+}
+
+}
+@keyframes pianoFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Lid */
+
+.piano-lid{
+
+    position:absolute;
+
+    top:0;
+
+    left:40px;
+
+    width:320px;
+
+    height:90px;
+
+    background:linear-gradient(145deg,#1a1a1a,#050505);
+
+    border-radius:180px 180px 20px 20px;
+
+    transform:rotate(-8deg);
+
+    box-shadow:
+
+        0 8px 30px rgba(0,0,0,.6),
+
+        0 0 20px rgba(255,215,120,.08);
+
+}
+
+/* Body */
+
+.piano-body{
+
+    position:absolute;
+
+    bottom:40px;
+
+    width:100%;
+
+    height:130px;
+
+    background:linear-gradient(180deg,#111,#000);
+
+    border-radius:160px 160px 30px 30px;
+
+    box-shadow:
+
+        inset 0 0 10px rgba(255,255,255,.05),
+
+        0 20px 40px rgba(0,0,0,.7);
+
+}
+
+/* Keyboard */
+
+.keyboard{
+
+    position:absolute;
+
+    left:60px;
+
+    bottom:18px;
+
+    width:300px;
+
+    height:52px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    border-radius:4px;
+
+    background:#fff;
+
+}
+
+/* White Keys */
+
+.white-key{
+
+    flex:1;
+
+    border-right:1px solid #ccc;
+
+    background:linear-gradient(#ffffff,#ececec);
+
+}
+
+/* Black Keys */
+
+.black-keys{
+
+    position:absolute;
+
+    left:10px;
+
+    top:0;
+
+    display:flex;
+
+    gap:11px;
+
+}
+
+.black-key{
+
+    width:12px;
+
+    height:30px;
+
+    background:#111;
+
+    border-radius:0 0 3px 3px;
+
+}
+
+/* Legs */
+
+.leg{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:10px;
+
+    height:48px;
+
+    background:#111;
+
+}
+
+.leg-left{
+
+    left:70px;
+
+}
+
+.leg-center{
+
+    left:205px;
+
+}
+
+.leg-right{
+
+    right:70px;
+
+}
+
+/* Pedals */
+
+.pedals{
+
+    position:absolute;
+
+    bottom:18px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+.pedals span{
+
+    width:6px;
+
+    height:18px;
+
+    border-radius:3px;
+
+    background:gold;
+
+    box-shadow:0 0 8px rgba(255,215,0,.5);
+
+}
+
+/* Piano Float */
+
+@keyframes pianoFloat{
+
+0%,100%{
+
+transform:translateX(-50%) translateY(0);
+
+}
+
+50%{
+
+transform:translateX(-50%) translateY(-6px);
+
+}
+
+}
+
+.stage-reflection{
+
+position:absolute;
+z-index:8;
+left:50%;
+
+bottom:150px;
+
+transform:translateX(-50%);
+
+width:950px;
+opacity:.25;
+height:220px;
+
+background:
+
+radial-gradient(
+
+ellipse,
+
+rgba(255,220,120,.15),
+
+transparent 75%
+
+);
+
+filter:blur(45px);
+
+animation:reflectionGlow 8s ease infinite;
+
+}
+
+@keyframes reflectionGlow{
+
+0%,100%{
+
+opacity:.25;
+
+}
+
+50%{
+
+opacity:.55;
+
+}
+
+}
+.stage-shadow{
+
+position:absolute;
+z-index:7;
+left:50%;
+
+bottom:70px;
+
+transform:translateX(-50%);
+
+width:850px;
+
+height:180px;
+
+background:
+
+radial-gradient(
+
+ellipse,
+
+rgba(0,0,0,.65),
+
+transparent 75%
+
+);
+
+filter:blur(70px);
+
+}
+.piano-glow {
+    position: absolute;
+    left: 50%;
+    bottom: 180px;
+    transform: translateX(-50%);
+    z-index:6;
+    width: 650px;
+    height: 320px;
+
+   background: radial-gradient(
+    ellipse,
+    rgba(255,215,120,.07),
+    transparent 75%
+);
+
+    filter: blur(70px);
+
+    z-index: 7;
+
+    pointer-events: none;
+    
+}
+.grand-piano::before{
+
+content:"";
+
+position:absolute;
+
+top:18px;
+left:30px;
+
+width:70%;
+height:35%;
+
+background:linear-gradient(
+180deg,
+rgba(255,255,255,.18),
+transparent
+);
+
+border-radius:50%;
+
+filter:blur(12px);
+
+}
+.piano-container{
+
+position:absolute;
+
+left:25%;
+
+bottom:30px;
+
+transform:translateX(-50%);
+
+z-index:15;
+
+}
+.piano-area{
+
+    position:absolute;
+
+    left:50%;
+
+    bottom:0;
+
+    transform:translateX(-50%);
+
+    width:900px;
+
+    height:700px;
+
+    z-index:20;
+}
+/* ==========================================
+   PREVENT BACKGROUND FROM BLOCKING CLICKS
+========================================== */
+
+
+/* ==========================
+   Envelope Layer
+========================== */
+
+.envelope-layer{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:100%;
+
+    height:100%;
+
+    z-index:100;
+
+    pointer-events:none;
+}
+
+.stars,
+.center-glow,
+.stage-lights,
+.light,
+.lamp,
+.fog,
+.dust-container,
+.dust,
+.stage-floor,
+.stage-shadow,
+.stage-reflection,
+.piano-glow{
+    pointer-events:none;
+}
