@@ -24,7 +24,7 @@ function Scrapbook({ onComplete }) {
 
   return (
     <section className="scrapbook-screen">
-       <MusicPlayer />
+      
       <CinematicBackground
         onEnvelopeClick={handleEnvelopeClick}
       />

@@ -14,7 +14,7 @@ export default function GrandPiano() {
       }}
     >
       <svg
-    viewBox="150 0 780 650"
+    viewBox="0 0 1100 650"  preserveAspectRatio="xMidYMid meet"
     xmlns="http://www.w3.org/2000/svg"
 >
         <defs>

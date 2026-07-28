@@ -301,23 +301,21 @@ opacity:0;
 
     position:absolute;
 
-    left:25%;
+    left:50%;
 
-    bottom:30px;
-
-    width:650px;
+    bottom:40px;
 
     transform:translateX(-50%);
 
+    width:min(650px,85vw);
+
     z-index:20;
 
-    pointer-events:none;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
+
+    pointer-events:none;
 
 }
 
@@ -698,18 +696,20 @@ z-index:15;
 
 }
 .piano-area{
-
     position:absolute;
 
     left:50%;
-
     bottom:0;
 
     transform:translateX(-50%);
 
-    width:900px;
+    width:min(900px,100vw);
 
-    height:700px;
+    height:min(700px,100vh);
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
 
     z-index:20;
 }
@@ -754,4 +754,128 @@ z-index:15;
 .stage-reflection,
 .piano-glow{
     pointer-events:none;
+}
+
+
+@media (max-width:768px){
+
+.cinematic-bg{
+
+overflow:hidden;
+
+}
+
+.piano-area{
+
+width:100%;
+
+height:55vh;
+
+bottom:0;
+
+}
+
+.grand-piano{
+
+width:90vw;
+
+bottom:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+}
+
+.envelope-layer{
+
+top:35%;
+
+}
+
+.stage-floor{
+
+height:250px;
+
+bottom:-12%;
+
+}
+
+.center-glow{
+
+width:85vw;
+
+height:85vw;
+
+top:42%;
+
+}
+
+.stage-shadow{
+
+width:95vw;
+
+bottom:15px;
+
+}
+
+.stage-reflection{
+
+width:95vw;
+
+bottom:70px;
+
+}
+
+.piano-glow{
+
+width:90vw;
+
+bottom:110px;
+
+}
+
+}
+@media (max-width:430px){
+
+.piano-area{
+
+    bottom:14%;
+
+    transform:
+        translateX(-50%)
+        scale(.62);
+
+}
+
+.envelope-layer{
+
+    top:34%;
+
+    transform:
+        translateX(-50%)
+        scale(.82);
+
+}
+
+.stage-floor{
+
+    width:260px;
+    height:60px;
+
+}
+
+.stage-shadow{
+
+    width:240px;
+    height:45px;
+
+}
+
+.stage-reflection{
+
+    width:180px;
+
+}
+
 }
