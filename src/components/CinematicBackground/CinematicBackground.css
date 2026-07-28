@@ -28,7 +28,7 @@
 
 /* ===================== GLOW ======================= */
 
-.center-glow{
+/* .center-glow{
      z-index:2;
     position:absolute;
     left:50%;
@@ -43,6 +43,43 @@
         transparent 72%);
       opacity:.8;
     animation:glowPulse 8s ease-in-out infinite;
+} */
+ .center-glow{
+
+    position:absolute;
+
+    left:50%;
+    top:38%;
+
+    transform:translate(-50%,-50%);
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+
+        circle,
+
+        rgba(255,245,190,.38) 0%,
+
+        rgba(255,220,140,.26) 25%,
+
+        rgba(255,190,90,.14) 50%,
+
+        rgba(255,170,70,.06) 68%,
+
+        transparent 82%
+
+    );
+
+    filter:blur(18px);
+
+    opacity:.95;
+
+    animation:glowPulse 7s ease-in-out infinite;
+
 }
 
 /* ===================== LIGHTS ===================== */
@@ -50,11 +87,26 @@
 .stage-lights{position:absolute;inset:0;  z-index:3;}
 
 .lamp{
+
     position:absolute;
-    width:18px;height:18px;
+
+    width:24px;
+    height:24px;
+
     border-radius:50%;
-    background:#ffe8a3;
-    box-shadow:0 0 15px #ffd76b,0 0 35px #ffd76b,0 0 70px #ffd76b;
+
+    background:#fff7d2;
+
+    box-shadow:
+
+        0 0 25px #ffe07a,
+
+        0 0 60px #ffd76b,
+
+        0 0 120px rgba(255,220,120,.95),
+
+        0 0 180px rgba(255,215,80,.65);
+
 }
 
 .lamp-left{left:18%;top:18px;}
@@ -254,8 +306,12 @@ bottom:120px;
     background:#ffe6a3;
 
     box-shadow:
-        0 0 6px #ffe6a3,
-        0 0 18px #ffd76b;
+
+        0 0 8px #fff6d8,
+
+        0 0 18px #ffe28a,
+
+        0 0 35px rgba(255,220,120,.9);
 
     opacity:0;
 
@@ -299,17 +355,11 @@ opacity:0;
 ========================================================== */
 .grand-piano{
 
-    position:absolute;
+    position:relative;
 
-    left:50%;
+    width:min(900px,92vw);
 
-    bottom:40px;
-
-    transform:translateX(-50%);
-
-    width:min(650px,85vw);
-
-    z-index:20;
+    margin:0 auto;
 
     display:flex;
     justify-content:center;
@@ -686,7 +736,7 @@ filter:blur(12px);
 
 position:absolute;
 
-left:25%;
+
 
 bottom:30px;
 
@@ -696,22 +746,72 @@ z-index:15;
 
 }
 .piano-area{
+
     position:absolute;
 
-    left:50%;
-    bottom:0;
-
-    transform:translateX(-50%);
-
-    width:min(900px,100vw);
-
-    height:min(700px,100vh);
+    inset:0;
 
     display:flex;
+
     justify-content:center;
+
     align-items:flex-end;
 
     z-index:20;
+
+    pointer-events:auto;
+
+}
+.piano-wrapper{
+
+    position:relative;
+
+    width:min(900px,92vw);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    animation:pianoFloat 5s ease-in-out infinite;
+
+}
+.piano-image{
+
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+    user-select:none;
+
+    pointer-events:none;
+
+    filter:
+        drop-shadow(0 35px 50px rgba(0,0,0,.65));
+         -webkit-user-drag:none;
+
+}
+/* ===========================
+   Float
+=========================== */
+
+@keyframes pianoFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-8px);
+
+}
+
 }
 /* ==========================================
    PREVENT BACKGROUND FROM BLOCKING CLICKS
@@ -721,26 +821,28 @@ z-index:15;
 /* ==========================
    Envelope Layer
 ========================== */
+/* =====================================
+   ENVELOPE POSITION
+===================================== */
 
 .envelope-layer{
 
     position:absolute;
 
-    left:50%;
+    left:28%;
 
-    top:50%;
+    top:28%;
 
     transform:translate(-50%,-50%);
 
     width:100%;
-
     height:100%;
 
-    z-index:100;
-
     pointer-events:none;
-}
 
+    z-index:50;
+
+}
 .stars,
 .center-glow,
 .stage-lights,
@@ -765,15 +867,7 @@ overflow:hidden;
 
 }
 
-.piano-area{
 
-width:100%;
-
-height:55vh;
-
-bottom:0;
-
-}
 
 .grand-piano{
 
@@ -787,11 +881,7 @@ transform:translateX(-50%);
 
 }
 
-.envelope-layer{
 
-top:35%;
-
-}
 
 .stage-floor{
 
@@ -838,25 +928,9 @@ bottom:110px;
 }
 @media (max-width:430px){
 
-.piano-area{
 
-    bottom:14%;
 
-    transform:
-        translateX(-50%)
-        scale(.62);
 
-}
-
-.envelope-layer{
-
-    top:34%;
-
-    transform:
-        translateX(-50%)
-        scale(.82);
-
-}
 
 .stage-floor{
 
@@ -878,4 +952,539 @@ bottom:110px;
 
 }
 
+}
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width:1440px){
+
+    .grand-piano{
+
+        width:760px;
+
+        bottom:30px;
+
+    }
+
+    
+
+    .center-glow{
+
+        width:560px;
+
+        height:560px;
+
+    }
+
+    .stage-shadow{
+
+        width:900px;
+
+    }
+
+    .stage-reflection{
+
+        width:900px;
+
+    }
+
+    .piano-glow{
+
+        width:700px;
+
+    }
+
+}
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width:1024px){
+
+    .grand-piano{
+
+        width:620px;
+
+        bottom:25px;
+
+    }
+
+   
+
+    .center-glow{
+
+        width:470px;
+
+        height:470px;
+
+    }
+
+    .light{
+
+        width:240px;
+
+        height:760px;
+
+    }
+
+    .fog{
+
+        width:1000px;
+
+        height:1000px;
+
+    }
+
+    .stage-floor{
+
+        height:500px;
+
+    }
+
+    .stage-shadow{
+
+        width:720px;
+
+        bottom:35px;
+
+    }
+
+    .stage-reflection{
+
+        width:760px;
+
+        bottom:95px;
+
+    }
+
+    .piano-glow{
+
+        width:560px;
+
+        bottom:145px;
+
+    }
+
+}
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width:768px){
+
+    .center-glow{
+
+        width:340px;
+
+        height:340px;
+
+        top:40%;
+
+    }
+
+    .light{
+
+        width:170px;
+
+        height:620px;
+
+    }
+
+    .fog{
+
+        width:750px;
+
+        height:750px;
+
+    }
+
+    .grand-piano{
+
+        width:420px;
+
+        bottom:10px;
+
+    }
+
+    
+
+    .stage-floor{
+
+        height:280px;
+
+        bottom:-15%;
+
+    }
+
+    .stage-shadow{
+
+        width:430px;
+
+        height:90px;
+
+        bottom:12px;
+
+    }
+
+    .stage-reflection{
+
+        width:420px;
+
+        height:120px;
+
+        bottom:60px;
+
+    }
+
+    .piano-glow{
+
+        width:420px;
+
+        height:180px;
+
+        bottom:100px;
+
+    }
+
+}
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width:430px){
+
+    .grand-piano{
+
+        width:330px;
+
+        bottom:5px;
+
+    }
+
+    
+
+    .center-glow{
+
+        width:280px;
+
+        height:280px;
+
+    }
+
+    .light{
+
+        width:120px;
+
+        height:500px;
+
+    }
+
+    .fog{
+
+        width:600px;
+
+        height:600px;
+
+    }
+
+    .stage-floor{
+
+        height:220px;
+
+    }
+
+    .stage-shadow{
+
+        width:320px;
+
+        height:60px;
+
+    }
+
+    .stage-reflection{
+
+        width:300px;
+
+        height:80px;
+
+    }
+
+    .piano-glow{
+
+        width:300px;
+
+        height:120px;
+
+        bottom:75px;
+
+    }
+
+}
+/* ========================================
+   iPad Air / Tablets
+======================================== */
+
+@media (min-width:769px) and (max-width:1024px){
+
+    
+
+    .grand-piano{
+
+        width:700px;
+
+    }
+
+    .center-glow{
+
+        width:520px;
+        height:520px;
+
+    }
+
+    .stage-floor{
+
+        height:420px;
+        bottom:-18%;
+
+    }
+
+    .stage-shadow{
+
+        width:720px;
+        bottom:35px;
+
+    }
+
+    .stage-reflection{
+
+        width:760px;
+        bottom:95px;
+
+    }
+
+    .piano-glow{
+
+        width:620px;
+        bottom:150px;
+
+    }
+
+}
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width:1024px){
+
+.piano-wrapper{
+
+    width:min(760px,94vw);
+
+}
+
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+.piano-area{
+
+    align-items:flex-end;
+
+    padding-bottom:10px;
+
+}
+
+.piano-wrapper{
+
+    width:min(520px,96vw);
+    top:209px;
+
+}
+
+}
+
+/* ===========================
+   Small Phones
+=========================== */
+
+@media (max-width:430px){
+
+.piano-wrapper{
+
+    width:98vw;
+
+}
+
+}
+@media (max-width:768px){
+
+.envelope-layer{
+
+    left:30%;
+
+    bottom:28%;
+
+    transform:translateX(-50%) scale(.75);
+
+}
+
+}
+
+
+
+.envelope-wrapper{
+
+    position:absolute;
+
+    left:57%;
+
+    top:42%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-10deg);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    z-index:101;
+
+    pointer-events:auto;
+
+}
+@media (max-width:1024px){
+
+.envelope-wrapper{
+
+    left:57%;
+
+    top:43%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.88)
+        rotate(-10deg);
+
+}
+
+}
+@media (max-width:768px){
+
+.envelope-wrapper{
+
+    left:57%;
+
+    top:44%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.72)
+        rotate(-10deg);
+
+}
+
+}
+@media (max-width:430px){
+
+.envelope-wrapper{
+
+    left:57%;
+
+    top:45%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.60)
+        rotate(-10deg);
+
+}
+
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 1024px) {
+
+    .envelope-layer{
+
+        left:30%;
+        top:36%;
+
+    }
+
+}
+/* ==========================================
+   LARGE PHONES
+========================================== */
+
+@media (max-width: 768px) {
+
+    .envelope-layer{
+
+        left:32%;
+        top:39%;
+
+    }
+
+}
+/* ==========================================
+   STANDARD PHONES
+========================================== */
+
+@media (max-width: 600px) {
+
+    .envelope-layer{
+
+        left:33%;
+        top:41%;
+
+    }
+
+}
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media (max-width: 430px) {
+
+    .envelope-layer{
+
+        left:34%;
+        top:43%;
+
+    }
+
+}
+/* ==========================================
+   VERY SMALL DEVICES
+========================================== */
+
+@media (max-width: 360px) {
+
+    .envelope-layer{
+
+        left:35%;
+        top:45%;
+
+    }
+
+}
+
+
+.envelope-wrapper,
+.envelope,
+button,
+a,
+input {
+    pointer-events:auto;
 }

@@ -5,23 +5,27 @@
 
     position:absolute;
 
-    left:58%;
+    left:50%;
 
-    bottom:280px;
+    top:50%;
 
-    transform:translateX(-50%) rotate(-10deg);
-
-    z-index:101;
-
-    pointer-events:auto;
+    transform:translate(-50%,-50%) rotate(-10deg);
 
     display:flex;
 
     flex-direction:column;
 
     align-items:center;
-}
 
+    pointer-events:auto;
+
+    z-index:101;
+
+}
+/* .envelope-wrapper{
+    outline:5px solid red !important;
+    background:rgba(255,0,0,0.2);
+} */
 
 /* ===========================
    ENVELOPE
@@ -222,10 +226,13 @@
     font-size:18px;
 
     font-weight:bold;
+box-shadow:
 
-    box-shadow:
+0 0 12px rgba(255,215,0,.5),
 
-        0 0 18px rgba(255,215,0,.4);
+0 0 30px rgba(255,215,0,.25);
+
+animation:sealGlow 2.5s infinite;
 
 }
 
@@ -282,5 +289,378 @@ opacity:.45;
 transform:translateY(0);
 
 }
+
+}
+.envelope-glow{
+
+position:absolute;
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,
+rgba(255,214,90,.35),
+transparent 70%);
+
+filter:blur(25px);
+
+animation:glow 3s infinite ease-in-out;
+
+z-index:-2;
+
+}
+.envelope-shadow{
+
+width:130px;
+
+height:18px;
+
+border-radius:50%;
+
+background:rgba(0,0,0,.35);
+
+filter:blur(10px);
+
+margin-top:8px;
+
+animation:shadowFloat 4s infinite;
+
+}
+.envelope.opening .top-flap{
+
+transform-origin:top;
+
+animation:openFlap .9s forwards;
+
+}
+.envelope.opening .letter{
+
+animation:letterRise .9s forwards;
+
+}
+@keyframes glow{
+
+0%,100%{
+
+transform:scale(.9);
+
+opacity:.5;
+
+}
+
+50%{
+
+transform:scale(1.1);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes shadowFloat{
+
+0%,100%{
+
+transform:scale(1);
+
+opacity:.45;
+
+}
+
+50%{
+
+transform:scale(.8);
+
+opacity:.25;
+
+}
+
+}
+
+@keyframes sealGlow{
+
+0%,100%{
+
+box-shadow:
+0 0 10px rgba(255,215,0,.35);
+
+}
+
+50%{
+
+box-shadow:
+0 0 24px rgba(255,215,0,.8);
+
+}
+
+}
+
+@keyframes openFlap{
+
+to{
+
+transform:rotateX(180deg);
+
+}
+
+}
+
+@keyframes letterRise{
+
+to{
+
+transform:translateY(-45px);
+
+}
+
+}
+@media (max-width:992px){
+
+.envelope-wrapper{
+
+bottom:135px;
+
+}
+
+.envelope{
+
+width:150px;
+
+height:100px;
+
+}
+
+.letter{
+
+width:126px;
+
+height:80px;
+
+left:12px;
+
+font-size:34px;
+
+}
+
+.click-text{
+
+font-size:24px;
+
+}
+
+}
+@media (max-width:768px){
+
+.envelope-wrapper{
+
+left:50%;
+
+bottom:105px;
+
+transform:translateX(-50%) rotate(-5deg);
+
+}
+
+.envelope{
+
+width:120px;
+
+height:82px;
+
+}
+
+.letter{
+
+width:100px;
+
+height:66px;
+
+left:10px;
+
+top:8px;
+
+font-size:28px;
+
+}
+
+.seal{
+
+width:24px;
+
+height:24px;
+
+top:26px;
+
+font-size:14px;
+
+}
+
+.click-text{
+
+font-size:18px;
+
+margin-top:12px;
+
+}
+
+.envelope-glow{
+
+width:120px;
+
+height:120px;
+
+}
+
+}
+@media (min-width:1440px){
+
+.envelope-wrapper{
+
+bottom:220px;
+
+}
+
+.envelope{
+
+width:210px;
+
+height:140px;
+
+}
+
+.click-text{
+
+font-size:34px;
+
+}
+
+}
+.envelope-layer{
+
+    position:absolute;
+/* 
+    left:28%;
+    top:30%; */
+
+    width:100%;
+    height:100%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:50;
+
+}
+
+/* ==========================================
+   iPad Pro / Large Tablets
+========================================== */
+
+@media (max-width: 1366px){
+
+    .envelope-layer{
+
+        left:28%;
+        top:33%;
+
+    }
+
+}
+
+/* ==========================================
+   iPad Air / iPad Mini
+========================================== */
+
+@media (max-width: 1024px){
+
+    .envelope-layer{
+
+        left:30%;
+        top:31%;
+
+    }
+
+}
+
+/* ==========================================
+   Large Phones
+========================================== */
+
+@media (max-width: 768px){
+
+    .envelope-layer{
+
+        left:28%;
+        top:40%;
+
+    }
+
+}
+
+/* ==========================================
+   Standard Phones
+========================================== */
+
+@media (max-width: 600px){
+
+    .envelope-layer{
+
+        left:28%;
+        top:40%;
+
+    }
+
+}
+
+
+/* ==========================================
+   Small Phones
+========================================== */
+
+@media (max-width: 430px){
+
+    .envelope-layer{
+
+        left:20%;
+        top:35%;
+
+    }
+
+}
+
+/* ==========================================
+   Very Small Phones
+========================================== */
+
+@media (max-width: 360px){
+
+    .envelope-layer{
+
+        left:20%;
+        top:35%;
+
+    }
+
+}
+@media (max-width: 1366px) {
+
+    .envelope-layer{
+        left: 29%;
+        top: 33%;
+    }
+
+}
+
+/* iPad Air, iPad Mini, iPad Pro 11" */
+@media (max-width: 1024px) {
+
+    .envelope-layer{
+        left: 30%;
+        top: 31%;
+    }
 
 }

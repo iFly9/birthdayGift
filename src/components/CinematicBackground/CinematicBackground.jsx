@@ -1,26 +1,33 @@
 import "./CinematicBackground.css";
 import GrandPiano from "../GrandPiano/GrandPiano";
 import Envelope from "../Envelope/Envelope";
-
-const particles = Array.from({ length: 70 });
+import desktopPiano from "../../assets/images/desktopPiano.png";
+import mobilePiano from "../../assets/images/mobilePiano.png";
+const particles = Array.from({ length: 150 });
 
 function CinematicBackground({
-    onEnvelopeClick,
-    showPiano = true,
-    showEnvelope = true,
-    showReflection = true,
-    showShadow = true,
+  onEnvelopeClick,
+  showPiano = true,
+  showEnvelope = true,
+  showReflection = true,
+  showShadow = true,
 }) {
   return (
     <div className="cinematic-bg">
 
-      {/* Stars */}
+      {/* =======================
+          Stars
+      ======================== */}
       <div className="stars"></div>
 
-      {/* Center Glow */}
+      {/* =======================
+          Center Glow
+      ======================== */}
       <div className="center-glow"></div>
 
-      {/* Stage Lights */}
+      {/* =======================
+          Stage Lights
+      ======================== */}
       <div className="stage-lights">
 
         <div className="lamp lamp-left"></div>
@@ -33,7 +40,9 @@ function CinematicBackground({
 
       </div>
 
-      {/* Dust */}
+      {/* =======================
+          Floating Dust
+      ======================== */}
       <div className="dust-container">
         {particles.map((_, i) => (
           <span
@@ -49,33 +58,98 @@ function CinematicBackground({
         ))}
       </div>
 
-      {/* Fog */}
+      {/* =======================
+          Fog Layers
+      ======================== */}
       <div className="fog fog1"></div>
       <div className="fog fog2"></div>
       <div className="fog fog3"></div>
 
-      {/* Piano Glow */}
+      {/* =======================
+          Piano Ambient Glow
+      ======================== */}
       <div className="piano-glow"></div>
 
-      {/* Piano */}
-      {showPiano && (
-        <div className="piano-area">
-          <GrandPiano />
+      {/* =======================
+          Piano Section
+      ======================== */}
+     {/* =======================
+      Piano Section
+======================= */}
+
+{showPiano && (
+
+    <div className="piano-area">
+
+        <div className="piano-wrapper">
+
+            <picture>
+
+                {/* Mobile */}
+
+                <source
+                    media="(max-width:768px)"
+                    srcSet={mobilePiano}
+                />
+
+                {/* Desktop */}
+
+                <img
+                    src={desktopPiano}
+                    alt="Grand Piano"
+                    className="piano-image"
+                    draggable="false"
+                />
+
+            </picture>
+
+            <div className="interactive-layer">
+
+       {showEnvelope && (
+
+
+
+                <div className="envelope-layer">
+
+
+
+                    <Envelope
+
+                        onOpen={onEnvelopeClick}
+
+                    />
+
+
+
+                </div>
+
+
+
+            )}    </div>
+
         </div>
+
+    </div>
+
+)}
+
+      {/* =======================
+          Stage Reflection
+      ======================== */}
+      {showReflection && (
+        <div className="stage-reflection"></div>
       )}
 
-      {/* Envelope */}
-      {showEnvelope && (
-        <div className="envelope-layer">
-          <Envelope onOpen={onEnvelopeClick} />
-        </div>
+      {/* =======================
+          Stage Shadow
+      ======================== */}
+      {showShadow && (
+        <div className="stage-shadow"></div>
       )}
 
-      {/* Stage Reflection */}
-     {showReflection && <div className="stage-reflection"></div>}
-
-      {/* Stage */}
-     {showShadow && <div className="stage-shadow"></div>}
+      {/* =======================
+          Stage Floor
+      ======================== */}
       <div className="stage-floor"></div>
 
     </div>

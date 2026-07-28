@@ -4,11 +4,11 @@
 
 .scrapbook-screen{
 
-    position:static;
+    position:relative;
 
     width:100%;
 
-    height:100vh;
+    min-height:100dvh;
 
     overflow:hidden;
 
@@ -21,7 +21,7 @@
     align-items:center;
 
     background:#000;
-     pointer-events:none;
+     /* pointer-events:none; */
 
     /* isolation:isolate; */
 }
@@ -369,4 +369,298 @@ font-size:1.7rem;
 
 }
 
+}
+
+
+/* ==========================================================
+   PREMIUM RESPONSIVE SCRAPBOOK
+   Paste at the VERY END of Scrapbook.css
+========================================================== */
+
+/* ---------- Tablets ---------- */
+
+@media screen and (max-width:1024px){
+
+.scrapbook-screen{
+
+    position:relative;
+
+    width:100%;
+    min-height:100dvh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+
+}
+
+.scrapbook-screen::before{
+
+    inset:-40%;
+
+    filter:blur(110px);
+
+}
+
+.scrapbook-screen::after{
+
+    width:650px;
+    height:650px;
+
+    filter:blur(80px);
+
+}
+
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media screen and (max-width:768px){
+
+html,
+body{
+
+    width:100%;
+    overflow-x:hidden;
+
+}
+
+.scrapbook-screen{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100dvh;
+
+    overflow:hidden;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:
+        env(safe-area-inset-top)
+        20px
+        env(safe-area-inset-bottom);
+
+}
+
+.scrapbook-screen::before{
+
+    inset:-45%;
+
+    filter:blur(90px);
+
+    opacity:.85;
+
+}
+
+.scrapbook-screen::after{
+
+    width:520px;
+
+    height:520px;
+
+    filter:blur(70px);
+
+    opacity:.8;
+
+}
+
+.title{
+
+    font-size:2.4rem;
+
+    text-align:center;
+
+}
+
+.subtitle{
+
+    font-size:1rem;
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.book-wrapper{
+
+    width:min(300px,90vw);
+
+    height:auto;
+
+    aspect-ratio:340/460;
+
+}
+
+.cover h2{
+
+    font-size:1.8rem;
+
+}
+
+.cover p{
+
+    font-size:.82rem;
+
+    letter-spacing:3px;
+
+}
+
+.hint{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    font-size:.95rem;
+
+}
+
+}
+
+
+/* ---------- iPhone / Android ---------- */
+
+@media screen and (max-width:480px){
+
+.scrapbook-screen{
+
+    padding:
+        max(20px, env(safe-area-inset-top))
+        18px
+        max(18px, env(safe-area-inset-bottom));
+
+}
+
+.scrapbook-screen::before{
+
+    inset:-55%;
+
+    filter:blur(80px);
+
+}
+
+.scrapbook-screen::after{
+
+    width:420px;
+
+    height:420px;
+
+    filter:blur(55px);
+
+}
+
+.book-wrapper{
+
+    width:min(280px,92vw);
+
+}
+
+.cover h2{
+
+    font-size:1.6rem;
+
+}
+
+.cover p{
+
+    font-size:.75rem;
+
+}
+
+.title{
+
+    font-size:2rem;
+
+}
+
+.subtitle{
+
+    font-size:.95rem;
+
+}
+
+}
+
+
+/* ---------- Small Phones ---------- */
+
+@media screen and (max-width:360px){
+
+.book-wrapper{
+
+    width:min(250px,92vw);
+
+}
+
+.cover h2{
+
+    font-size:1.45rem;
+
+}
+
+.cover p{
+
+    font-size:.72rem;
+
+}
+
+.title{
+
+    font-size:1.8rem;
+
+}
+
+.subtitle{
+
+    font-size:.9rem;
+
+}
+
+}
+
+
+/* ---------- Landscape Phones ---------- */
+
+@media screen and (orientation:landscape) and (max-height:600px){
+
+.scrapbook-screen{
+
+    padding:15px;
+
+}
+
+.book-wrapper{
+
+    transform:scale(.82);
+
+}
+
+.title{
+
+    font-size:2rem;
+
+}
+
+.subtitle{
+
+    margin-bottom:18px;
+
+}
+
+}
+.scrapbook-screen::before,
+.scrapbook-screen::after{
+    pointer-events:none;
 }

@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import "./Envelope.css";
+import { useState } from "react";
 
 export default function Envelope({ onOpen }) {
+  const [opening, setOpening] = useState(false);
   const handleClick = () => {
+    setOpening(true);
     console.log("📩 Envelope Clicked");
 
     // if (typeof onOpen === "function") {
@@ -13,7 +16,7 @@ export default function Envelope({ onOpen }) {
 
   setTimeout(() => {
     onOpen();
-  }, 1000);
+  }, 1200);
   };
 
   return (
@@ -24,7 +27,7 @@ export default function Envelope({ onOpen }) {
       transition={{ duration: 1.8 }}
     >
       <motion.div
-        className="envelope"
+        className={`envelope ${opening ? "opening" : ""}`}
         animate={{
           y: [0, -6, 0],
           rotate: [-6, -5, -6],
