@@ -1,79 +1,686 @@
-.memory-photo{
+/* ==========================================================
+   FALLING PHOTOS
+   PREMIUM RESPONSIVE PHOTO GALLERY
+========================================================== */
 
-   position:absolute;
 
-cursor:pointer;
+/* ==========================================================
+   MAIN CONTAINER
+========================================================== */
 
-z-index:10;
-}
+.falling-photos-container {
 
-.memory-photo img{
+    position: absolute;
 
-   width:150px;
+    inset: 0;
 
-height:150px;
+    width: 100%;
+    height: 100%;
 
-object-fit:cover;
+    overflow: hidden;
 
-border-radius:18px;
+    pointer-events: none;
 
-border:4px solid #e4be3f;
+    padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
 
-box-shadow:
-
-0 10px 25px rgba(0,0,0,.35),
-
-0 0 20px rgba(255,215,0,.25);
-
-transition:.4s;
-
-}
-
-.memory-photo:hover{
-
-z-index:500;
+    box-sizing: border-box;
 
 }
 
-.memory-photo:hover img{
 
-transform:scale(1.08);
+/* ==========================================================
+   MEMORY PHOTO
+========================================================== */
 
-box-shadow:
+.memory-photo {
 
-0 15px 35px rgba(0,0,0,.5),
+    position: absolute;
 
-0 0 30px rgba(255,215,0,.8);
+    left: var(--photo-x);
+    top: var(--photo-y);
 
-}
+    width: clamp(
+        110px,
+        11vw,
+        160px
+    );
 
-/* Tablet */
+    aspect-ratio: 1 / 1;
 
-@media(max-width:900px){
+    cursor: pointer;
 
-.memory-photo{
+    pointer-events: auto;
 
-width:90px;
-height:90px;
+    z-index: 10;
 
-}
+    transform-origin: center;
 
-}
+    will-change: transform;
 
-/* Mobile */
-
-@media(max-width:600px){
-
-.memory-photo{
-
-width:70px;
-height:70px;
+    box-sizing: border-box;
 
 }
 
-}
-.memory-photo img{
+
+/* ==========================================================
+   PHOTO IMAGE
+========================================================== */
+
+.memory-photo img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius:
+        clamp(
+            12px,
+            1.5vw,
+            18px
+        );
+
+    border:
+        clamp(
+            2px,
+            .3vw,
+            4px
+        )
+        solid
+        #e4be3f;
+
+    box-sizing: border-box;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
     box-shadow:
-        0 12px 30px rgba(0,0,0,.45),
-        0 0 20px rgba(212,175,55,.25);
+
+        0 10px 25px rgba(0,0,0,.35),
+
+        0 0 20px rgba(255,215,0,.25);
+
+    transition:
+
+        transform .4s ease,
+
+        box-shadow .4s ease;
+
+}
+
+
+/* ==========================================================
+   HOVER
+========================================================== */
+
+.memory-photo:hover {
+
+    z-index: 500;
+
+}
+
+
+.memory-photo:hover img {
+
+    transform: scale(1.08);
+
+    box-shadow:
+
+        0 15px 35px rgba(0,0,0,.5),
+
+        0 0 30px rgba(255,215,0,.8);
+
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP
+   1440px+
+========================================================== */
+
+@media (min-width:1440px) {
+
+    .memory-photo {
+
+        width: clamp(
+            140px,
+            10vw,
+            175px
+        );
+
+    }
+
+}
+
+
+/* ==========================================================
+   LAPTOP
+   1200px - 1439px
+========================================================== */
+
+@media (min-width:901px) and (max-width:1439px) {
+
+    .memory-photo {
+
+        width: clamp(
+            115px,
+            11vw,
+            150px
+        );
+
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+   601px - 900px
+========================================================== */
+
+@media (min-width:601px) and (max-width:900px) {
+
+    .memory-photo {
+
+        width: clamp(
+            90px,
+            13vw,
+            125px
+        );
+
+    }
+
+
+    .memory-photo img {
+
+        border-width: 3px;
+
+        border-radius: 14px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   430px AND BELOW
+========================================================== */
+
+@media (max-width:600px) {
+
+    .falling-photos-container {
+
+        width: 100%;
+        height: 100%;
+
+        overflow: hidden;
+
+        padding:
+
+            max(
+                8px,
+                env(safe-area-inset-top)
+            )
+
+            max(
+                8px,
+                env(safe-area-inset-right)
+            )
+
+            max(
+                8px,
+                env(safe-area-inset-bottom)
+            )
+
+            max(
+                8px,
+                env(safe-area-inset-left)
+            );
+
+    }
+
+
+    /* ==============================
+       PHOTO SIZE
+    ============================== */
+
+    .memory-photo {
+
+        width: clamp(
+            68px,
+            19vw,
+            88px
+        );
+
+        aspect-ratio: 1 / 1;
+
+    }
+
+
+    /* ==============================
+       PHOTO IMAGE
+    ============================== */
+
+    .memory-photo img {
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        border-width: 2px;
+
+        border-radius:
+            clamp(
+                10px,
+                3vw,
+                14px
+            );
+
+        box-shadow:
+
+            0 8px 20px rgba(0,0,0,.4),
+
+            0 0 15px rgba(212,175,55,.35);
+
+    }
+
+
+    /* ==============================
+       MOBILE HOVER
+    ============================== */
+
+    .memory-photo:hover img {
+
+        transform: scale(1.04);
+
+        box-shadow:
+
+            0 10px 25px rgba(0,0,0,.5),
+
+            0 0 22px rgba(255,215,0,.7);
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE PHOTO POSITIONS
+   430px AND BELOW
+========================================================== */
+
+@media (max-width:600px) {
+
+
+    /* ------------------------------
+       PHOTO 1
+       TOP LEFT
+    ------------------------------ */
+
+    .memory-photo:nth-child(1) {
+
+        left: 3% !important;
+
+        top: 7% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 2
+       TOP RIGHT
+    ------------------------------ */
+
+    .memory-photo:nth-child(2) {
+
+        left: 74% !important;
+
+        top: 8% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 3
+       UPPER LEFT
+    ------------------------------ */
+
+    .memory-photo:nth-child(3) {
+
+        left: 5% !important;
+
+        top: 29% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 4
+       UPPER RIGHT
+    ------------------------------ */
+
+    .memory-photo:nth-child(4) {
+
+        left: 74% !important;
+
+        top: 30% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 5
+       MIDDLE LEFT
+    ------------------------------ */
+
+    .memory-photo:nth-child(5) {
+
+        left: 3% !important;
+
+        top: 51% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 6
+       MIDDLE RIGHT
+    ------------------------------ */
+
+    .memory-photo:nth-child(6) {
+
+        left: 76% !important;
+
+        top: 51% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 7
+       LOWER CENTER LEFT
+    ------------------------------ */
+
+    .memory-photo:nth-child(7) {
+
+        left: 25% !important;
+
+        top: 65% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 8
+       LOWER CENTER RIGHT
+    ------------------------------ */
+
+    .memory-photo:nth-child(8) {
+
+        left: 53% !important;
+
+        top: 65% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 9
+       BOTTOM LEFT
+    ------------------------------ */
+
+    .memory-photo:nth-child(9) {
+
+        left: 5% !important;
+
+        top: 80% !important;
+
+    }
+
+
+    /* ------------------------------
+       PHOTO 10
+       BOTTOM RIGHT
+    ------------------------------ */
+
+    .memory-photo:nth-child(10) {
+
+        left: 73% !important;
+
+        top: 80% !important;
+
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL PHONES
+   iPhone SE / 375px
+========================================================== */
+
+@media (max-width:375px) {
+
+    .memory-photo {
+
+        width: clamp(
+            62px,
+            18vw,
+            76px
+        );
+
+    }
+
+
+    .memory-photo img {
+
+        border-width: 2px;
+
+        border-radius: 10px;
+
+    }
+
+
+    /* ------------------------------
+       SMALL PHONE POSITIONS
+    ------------------------------ */
+
+    .memory-photo:nth-child(1) {
+
+        left: 3% !important;
+
+        top: 7% !important;
+
+    }
+
+
+    .memory-photo:nth-child(2) {
+
+        left: 76% !important;
+
+        top: 8% !important;
+
+    }
+
+
+    .memory-photo:nth-child(3) {
+
+        left: 3% !important;
+
+        top: 31% !important;
+
+    }
+
+
+    .memory-photo:nth-child(4) {
+
+        left: 77% !important;
+
+        top: 32% !important;
+
+    }
+
+
+    .memory-photo:nth-child(5) {
+
+        left: 3% !important;
+
+        top: 54% !important;
+
+    }
+
+
+    .memory-photo:nth-child(6) {
+
+        left: 77% !important;
+
+        top: 54% !important;
+
+    }
+
+
+    .memory-photo:nth-child(7) {
+
+        left: 24% !important;
+
+        top: 68% !important;
+
+    }
+
+
+    .memory-photo:nth-child(8) {
+
+        left: 55% !important;
+
+        top: 68% !important;
+
+    }
+
+
+    .memory-photo:nth-child(9) {
+
+        left: 6% !important;
+
+        top: 82% !important;
+
+    }
+
+
+    .memory-photo:nth-child(10) {
+
+        left: 74% !important;
+
+        top: 82% !important;
+
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SHORT MOBILE SCREENS
+========================================================== */
+
+@media (max-width:600px) and (max-height:700px) {
+
+    .memory-photo {
+
+        width: clamp(
+            60px,
+            17vw,
+            78px
+        );
+
+    }
+
+
+    .memory-photo:nth-child(7),
+    .memory-photo:nth-child(8) {
+
+        top: 63% !important;
+
+    }
+
+
+    .memory-photo:nth-child(9),
+    .memory-photo:nth-child(10) {
+
+        top: 78% !important;
+
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL WIDTH
+   360px AND BELOW
+========================================================== */
+
+@media (max-width:360px) {
+
+    .memory-photo:nth-child(9),
+    .memory-photo:nth-child(10) {
+
+        display: none;
+
+    }
+
+
+    .memory-photo:nth-child(7) {
+
+        left: 22% !important;
+
+        top: 76% !important;
+
+    }
+
+
+    .memory-photo:nth-child(8) {
+
+        left: 57% !important;
+
+        top: 76% !important;
+
+    }
+
+}
+
+
+/* ==========================================================
+   FEEDBACK BUTTON
+========================================================== */
+
+
+/* ==========================================================
+   FEEDBACK BUTTON
+   MOBILE
+========================================================== */
+
+
+/* ==========================================================
+   REDUCE MOTION
+   Accessibility + Performance
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .memory-photo,
+    .memory-photo img {
+
+        animation: none !important;
+
+        transition: none !important;
+
+    }
+
 }

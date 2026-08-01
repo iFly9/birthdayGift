@@ -82,7 +82,7 @@ const [showFeedbackModal, setShowFeedbackModal] = useState(false);
     onClose={() => setSelectedMemory(null)}
 /> */}
 
-{showFeedbackBtn && !showFeedbackModal &&  (
+{showFeedbackBtn && !showFeedbackModal && !selectedMemory && (
     <motion.div
         className="feedback-btn-wrapper"
         initial={{

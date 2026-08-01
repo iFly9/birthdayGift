@@ -1,2316 +1,1747 @@
-/* =====================================
-   MAIN FULL SCREEN EXPERIENCE
-===================================== */
-
+/* =========================================================
+   FUNNY CHALLENGE
+   PREMIUM RESPONSIVE VERSION
+   iPhone SE → Pro Max → Tablet → Desktop
+========================================================= */
 
 .challenge-scene {
 
-    min-height:100vh;
-    width:100%;
+    position: fixed;
+    inset: 0;
 
-    position:relative;
+    width: 100%;
+    height: 100dvh;
 
-    overflow:hidden;
+    min-height: 100svh;
 
-    display:flex;
+    overflow: hidden;
 
-    justify-content:center;
+    display: flex;
 
-    align-items:center;
-
+    justify-content: center;
+    align-items: center;
 
     background:
 
-    radial-gradient(
-        circle at center,
-        rgba(255,215,120,.18),
-        transparent 35%
-    ),
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255,215,120,.18),
+            transparent 35%
+        ),
 
-    radial-gradient(
-        circle at top,
-        rgba(255,180,80,.12),
-        transparent 40%
-    ),
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(255,180,80,.12),
+            transparent 40%
+        ),
 
-    linear-gradient(
-        135deg,
-        #05030d,
-        #12091f,
-        #020207
-    );
+        linear-gradient(
+            135deg,
+            #05030d,
+            #12091f,
+            #020207
+        );
 
-
-    color:white;
+    color: white;
 
     font-family:
-    "Playfair Display",
-    serif;
+        "Playfair Display",
+        serif;
 
+    isolation: isolate;
+
+    overscroll-behavior: none;
+
+    touch-action: manipulation;
 }
 
 
-
-
-
-/* =====================================
-   GOLD CENTER LIGHT
-===================================== */
-
+/* =========================================================
+   GOLD CENTER GLOW
+========================================================= */
 
 .gold-glow {
 
+    position: absolute;
 
-    position:absolute;
+    width: clamp(
+        420px,
+        65vw,
+        700px
+    );
 
+    aspect-ratio: 1;
 
-    width:650px;
-
-    height:650px;
-
-
-    border-radius:50%;
-
+    border-radius: 50%;
 
     background:
 
-    radial-gradient(
+        radial-gradient(
+            circle,
+            rgba(255,215,120,.35),
+            transparent 70%
+        );
 
-        circle,
-
-        rgba(255,215,120,.35),
-
-        transparent 70%
-
+    filter: blur(
+        clamp(35px, 5vw, 60px)
     );
 
-
-    filter:blur(50px);
-
-
     animation:
+        glowPulse 5s infinite alternate;
 
-    glowPulse 5s infinite alternate;
+    pointer-events: none;
 
-
+    z-index: 0;
 }
-
-
-
 
 
 @keyframes glowPulse {
 
-
     from {
-
-        transform:scale(.9);
-
-        opacity:.5;
-
+        transform: scale(.9);
+        opacity: .5;
     }
 
-
     to {
-
-        transform:scale(1.2);
-
-        opacity:1;
-
+        transform: scale(1.2);
+        opacity: 1;
     }
 
 }
 
 
-
-
-
-/* =====================================
+/* =========================================================
    PARTICLES
-===================================== */
-
+========================================================= */
 
 .particles {
 
+    position: absolute;
 
-    position:absolute;
+    inset: 0;
 
-    inset:0;
+    pointer-events: none;
 
-    pointer-events:none;
+    overflow: hidden;
 
+    z-index: 1;
 }
-
-
-
 
 
 .particle {
 
+    position: absolute;
 
-    position:absolute;
-
-
-    bottom:-20px;
-
+    bottom: -20px;
 
     background:
 
-    radial-gradient(
+        radial-gradient(
+            circle,
+            #fff,
+            #ffd76a,
+            transparent
+        );
 
-        circle,
-
-        #fff,
-
-        #ffd76a,
-
-        transparent
-
-    );
-
-
-    border-radius:50%;
-
+    border-radius: 50%;
 
     animation:
+        floatParticle linear infinite;
 
-    floatParticle linear infinite;
-
-
-    opacity:.8;
-
-
+    opacity: .8;
 }
-
-
 
 
 @keyframes floatParticle {
 
-
     0% {
 
-
         transform:
+            translateY(0)
+            scale(1);
 
-        translateY(0)
-
-        scale(1);
-
-
-        opacity:0;
-
-
+        opacity: 0;
     }
-
 
     20% {
-
-
-        opacity:1;
-
+        opacity: 1;
     }
-
-
 
     100% {
 
-
         transform:
+            translateY(-110vh)
+            scale(1.8);
 
-        translateY(-110vh)
-
-        scale(1.8);
-
-
-        opacity:0;
-
-
+        opacity: 0;
     }
 
 }
-/* =====================================
-   MAIN CONTENT AREA
-===================================== */
 
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
 
 .challenge-content {
 
+    position: relative;
 
-    position:relative;
+    z-index: 5;
 
-
-    z-index:5;
-
-
-    width:100%;
-
-
-    min-height:100vh;
-
-
-    display:flex;
-
-
-    flex-direction:column;
-
-
-    justify-content:center;
-
-
-    align-items:center;
-
-
-    text-align:center;
-
-   max-width:100%;
-    padding:40px 20px;
-
-
-}
-
-
-
-
-
-/* =====================================
-   CROWN
-===================================== */
-
-
-.royal-crown {
-
-
-    font-size:70px;
-
-
-    margin-bottom:15px;
-
-
-    filter:
-
-    drop-shadow(
-        0 0 25px rgba(255,215,0,.8)
+    width: min(
+        100%,
+        900px
     );
 
+    height: 100%;
 
+    min-height: 0;
+
+    padding:
+
+        clamp(12px, 2.5vh, 30px)
+
+        clamp(14px, 4vw, 40px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: visible;
+
+    box-sizing: border-box;
 }
 
 
-
-
-
-/* =====================================
-   SECURITY BADGE
-===================================== */
-
-
-.security-badge {
-
-
-    padding:10px 25px;
-
-
-    border-radius:50px;
-
-
-    margin-bottom:25px;
-
-
-    font-size:14px;
-
-
-    letter-spacing:2px;
-
-
-    text-transform:uppercase;
-
-
-    color:#ffe8a3;
-
-
-    background:
-
-
-    rgba(255,255,255,.08);
-
-
-
-    border:
-
-
-    1px solid
-
-    rgba(255,215,120,.35);
-
-
-
-    backdrop-filter:
-
-    blur(10px);
-
-
-
-}
-
-
-
-
-
-/* =====================================
-   MAIN TITLE
-===================================== */
-
-
-.main-title {
-
-
-    font-size:
-
-    clamp(2.2rem,5vw,4rem);
-
-
-
-    line-height:1.15;
-
-
-    margin:10px 0 25px;
-
-
-    font-weight:700;
-
-
-
-    background:
-
-
-    linear-gradient(
-
-        90deg,
-
-        #fff4c2,
-
-        #ffd76a,
-
-        #fff
-
-    );
-
-
-
-    -webkit-background-clip:text;
-
-
-    color:transparent;
-
-
-
-    text-shadow:
-
-
-    0 0 30px rgba(255,215,100,.35);
-
-
-
-}
-
-
-
-
-
-/* =====================================
+/* =========================================================
    QUESTION
-===================================== */
-
+========================================================= */
 
 .question {
 
+    width: min(
+        92vw,
+        760px
+    );
+
+    margin:
+
+        0
+
+        0
+
+        clamp(
+            6px,
+            1.5vh,
+            15px
+        );
 
     font-size:
 
-    clamp(1.2rem,2.5vw,1.8rem);
+        clamp(
+            1.05rem,
+            2.4vw,
+            1.8rem
+        );
 
+    line-height:
 
+        clamp(
+            1.35,
+            1.5,
+            1.65
+        );
 
-    line-height:1.6;
+    font-weight: 400;
 
-
-    font-weight:400;
-
-
-    color:#f7f3e8;
-
-
-    margin-bottom:15px;
-
-
-
+    color: #f7f3e8;
 }
-
-
-
 
 
 .question span {
 
+    display: inline-block;
 
-    display:inline-block;
-
-
-    margin-top:10px;
-
+    margin-top:
+        clamp(4px, 1vh, 10px);
 
     font-size:
 
-    clamp(1.5rem,3vw,2.2rem);
+        clamp(
+            1.3rem,
+            3vw,
+            2.2rem
+        );
 
+    color: #ffd86b;
 
-
-    color:#ffd86b;
-
-
-    font-weight:700;
-
+    font-weight: 700;
 
     text-shadow:
-
-
-    0 0 25px rgba(255,200,80,.7);
-
-
-
+        0 0 25px rgba(255,200,80,.7);
 }
 
 
-
-
-
-/* =====================================
-   SMALL DESCRIPTION
-===================================== */
-
+/* =========================================================
+   HINT
+========================================================= */
 
 .hint {
 
+    margin:
+
+        0
+
+        0
+
+        clamp(
+            4px,
+            1vh,
+            12px
+        );
 
     color:
+        rgba(255,255,255,.7);
 
+    font-size:
 
-    rgba(255,255,255,.7);
+        clamp(
+            .78rem,
+            1.8vw,
+            1rem
+        );
 
-
-
-    font-size:1rem;
-
-
-    line-height:1.6;
-
-
-    margin-bottom:25px;
-
-
-
+    line-height: 1.45;
 }
 
 
-
-
-
-/* =====================================
-   JOURNEY DOTS
-===================================== */
-
+/* =========================================================
+   JOURNEY
+========================================================= */
 
 .journey {
 
+    display: flex;
 
-    display:flex;
+    justify-content: center;
 
+    align-items: center;
 
-    gap:10px;
+    gap:
 
+        clamp(
+            5px,
+            1vw,
+            10px
+        );
 
-    margin:15px 0;
+    margin:
 
+        clamp(5px, 1vh, 12px)
 
-
+        0;
 }
-
-
-
 
 
 .journey-dot {
 
+    width:
 
-    width:12px;
+        clamp(
+            7px,
+            1.5vw,
+            12px
+        );
 
+    height:
 
-    height:12px;
+        clamp(
+            7px,
+            1.5vw,
+            12px
+        );
 
+    flex-shrink: 0;
 
-    border-radius:50%;
-
+    border-radius: 50%;
 
     background:
+        rgba(255,255,255,.2);
 
-
-    rgba(255,255,255,.2);
-
-
-
-    transition:.3s ease;
-
-
-
+    transition: .3s ease;
 }
-
-
-
 
 
 .journey-dot.active {
 
-
-    background:#ffd86b;
-
+    background: #ffd86b;
 
     box-shadow:
+        0 0 15px #ffd86b;
 
-
-    0 0 15px #ffd86b;
-
-
-
-    transform:scale(1.3);
-
-
+    transform: scale(1.3);
 }
 
 
-
-
-
-/* =====================================
-   FUNNY MESSAGE
-===================================== */
-
+/* =========================================================
+   FUNNY REPLY
+========================================================= */
 
 .funny-reply {
 
+    width: min(
+        90vw,
+        500px
+    );
 
-    min-height:35px;
+    min-height:
 
+        clamp(
+            20px,
+            4vh,
+            35px
+        );
 
-    margin:15px;
+    margin:
 
+        clamp(2px, .7vh, 8px)
 
-    color:#ffd86b;
+        0;
 
+    color: #ffd86b;
 
-    font-size:1.2rem;
+    font-size:
 
+        clamp(
+            .85rem,
+            2vw,
+            1.2rem
+        );
 
-    font-weight:600;
+    font-weight: 600;
 
+    display: flex;
 
+    align-items: center;
 
+    justify-content: center;
 }
-/* =====================================
-   BUTTON AREA
-===================================== */
 
+
+/* =========================================================
+   ANSWER ZONE
+========================================================= */
 
 .answer-zone {
 
+    position: relative;
 
-    display:flex;
+    width:
 
+        min(
+            92vw,
+            600px
+        );
 
-    justify-content:center;
+    height:
 
+        clamp(
+            72px,
+            14vh,
+            125px
+        );
 
-    align-items:center;
+    display: flex;
 
+    justify-content: center;
 
-    gap:35px;
+    align-items: center;
 
+    gap:
 
-    margin-top:20px;
+        clamp(
+            14px,
+            4vw,
+            35px
+        );
 
+    margin:
 
-    position:relative;
+        clamp(
+            3px,
+            1vh,
+            12px
+        )
 
+        auto;
 
-    min-height:90px;
-
-
+    flex-shrink: 0;
 }
 
 
-
-
-
-/* =====================================
+/* =========================================================
    YES BUTTON
-===================================== */
-
+========================================================= */
 
 .magic-yes {
 
+    position: relative;
 
-    position:relative;
+    z-index: 3;
 
+    flex-shrink: 0;
 
-    z-index:3;
+    width:
 
+        clamp(
+            120px,
+            28vw,
+            210px
+        );
 
-    border:none;
+    height:
 
+        clamp(
+            46px,
+            7vh,
+            62px
+        );
 
-    outline:none;
+    padding: 0;
 
+    border: none;
 
-    cursor:pointer;
+    outline: none;
 
+    border-radius: 60px;
 
+    cursor: pointer;
 
-    padding:18px 55px;
+    font-size:
 
+        clamp(
+            .9rem,
+            2vw,
+            1.3rem
+        );
 
-    border-radius:60px;
+    font-weight: 700;
 
-
-
-    font-size:1.3rem;
-
-
-    font-weight:700;
-
-
-
-    color:#2b1700;
-
-
+    color: #2b1700;
 
     background:
 
-
-    linear-gradient(
-
-        135deg,
-
-        #fff2a8,
-
-        #ffd34d,
-
-        #ffb300
-
-    );
-
-
+        linear-gradient(
+            135deg,
+            #fff2a8,
+            #ffd34d,
+            #ffb300
+        );
 
     box-shadow:
+        0 0 25px rgba(255,215,80,.6);
 
+    transition: .3s ease;
 
-    0 0 25px rgba(255,215,80,.6);
-
-
-
-    transition:.3s ease;
-
-
-
+    white-space: nowrap;
 }
-
-
-
 
 
 .magic-yes:hover {
 
-
-    transform:translateY(-5px);
-
+    transform: translateY(-5px);
 
     box-shadow:
-
-
-    0 0 45px rgba(255,215,80,1);
-
-
-
+        0 0 45px rgba(255,215,80,1);
 }
 
 
-
-
-
-/* =====================================
-   NO BUTTON
-===================================== */
-
+/* =========================================================
+   NO BUTTON CONTAINER
+========================================================= */
 
 .escape-container {
 
+    position: relative;
 
-    position:relative;
+    z-index: 4;
 
+    display: flex;
 
-    z-index:4;
+    justify-content: center;
 
+    align-items: center;
 
+    flex-shrink: 0;
 
+    will-change: transform;
 }
 
 
-
-
+/* =========================================================
+   NO BUTTON
+========================================================= */
 
 .funny-no {
 
+    width:
 
+        clamp(
+            120px,
+            28vw,
+            210px
+        );
 
-    border:none;
+    height:
 
+        clamp(
+            46px,
+            7vh,
+            62px
+        );
 
-    outline:none;
+    padding: 0;
 
+    border: none;
 
-    cursor:pointer;
+    outline: none;
 
+    cursor: pointer;
 
+    border-radius: 60px;
 
-    padding:18px 55px;
+    font-size:
 
+        clamp(
+            .9rem,
+            2vw,
+            1.3rem
+        );
 
-    border-radius:60px;
+    font-weight: 700;
 
-
-
-    font-size:1.3rem;
-
-
-    font-weight:700;
-
-
-
-    color:white;
-
-
+    color: white;
 
     background:
 
-
-    linear-gradient(
-
-        135deg,
-
-        #5b1435,
-
-        #a52a5a
-
-    );
-
-
+        linear-gradient(
+            135deg,
+            #5b1435,
+            #a52a5a
+        );
 
     border:
-
-
-    1px solid rgba(255,255,255,.25);
-
-
+        1px solid rgba(255,255,255,.25);
 
     box-shadow:
+        0 0 25px rgba(255,80,150,.4);
 
+    transition: .3s ease;
 
-    0 0 25px rgba(255,80,150,.4);
-
-
-
-    transition:.3s ease;
-
-
-
+    white-space: nowrap;
 }
-
-
-
 
 
 .funny-no:hover {
 
-
     box-shadow:
-
-
-    0 0 45px rgba(255,80,150,.8);
-
-
-
+        0 0 45px rgba(255,80,150,.8);
 }
 
 
-
-
-
-/* =====================================
-   MUSIC NOTES
-===================================== */
-
+/* =========================================================
+   FLOATING MUSIC NOTES
+========================================================= */
 
 .music-notes {
 
+    position: absolute;
 
-    position:absolute;
+    inset: 0;
 
+    pointer-events: none;
 
-    inset:0;
+    overflow: hidden;
 
-
-    pointer-events:none;
-
-
-    overflow:hidden;
-
-
-
+    z-index: 2;
 }
-
-
-
 
 
 .music-note {
 
+    position: absolute;
 
-    position:absolute;
+    bottom: -50px;
 
+    font-size:
 
-    bottom:-50px;
-
-
-
-    left:
-
-    calc(
-      10% + var(--i)
-    );
-
-
-
-    font-size:40px;
-
-
+        clamp(
+            22px,
+            4vw,
+            40px
+        );
 
     color:
-
-
-    rgba(255,215,120,.45);
-
-
+        rgba(255,215,120,.45);
 
     filter:
-
-
-    drop-shadow(
-
-      0 0 15px gold
-
-    );
-
-
-
+        drop-shadow(
+            0 0 15px gold
+        );
 }
 
 
-
-
-
-/* =====================================
+/* =========================================================
    PIANO STAGE
-===================================== */
-
+========================================================= */
 
 .piano-stage {
 
+    position: relative;
 
-    margin-top:45px;
+    display: flex;
 
+    flex-direction: column;
+    
+    align-items: center;
 
-    position:relative;
+    margin-top:
 
+        clamp(
+            4px,
+            1.5vh,
+            18px
+        );
 
-    display:flex;
-
-
-    flex-direction:column;
-
-
-    align-items:center;
-
-
-
+    flex-shrink: 0;
 }
 
 
-
-
+/* =========================================================
+   PIANO LIGHT
+========================================================= */
 
 .piano-light {
 
+    position: absolute;
 
-    position:absolute;
+    width:
 
+        clamp(
+            190px,
+            55vw,
+            300px
+        );
 
-    width:280px;
+    height:
 
+        clamp(
+            70px,
+            15vh,
+            120px
+        );
 
-    height:100px;
-
-
-    top:-20px;
-
-
+    top:
+        clamp(
+            -18px,
+            -2vh,
+            -8px
+        );
 
     background:
 
+        radial-gradient(
+            ellipse,
+            rgba(255,215,100,.5),
+            transparent 70%
+        );
 
-    radial-gradient(
+    filter:
+        blur(
+            clamp(
+                18px,
+                4vw,
+                28px
+            )
+        );
 
-        ellipse,
-
-        rgba(255,215,100,.5),
-
-        transparent 70%
-
-    );
-
-
-
-    filter:blur(25px);
-
-
-
+    pointer-events: none;
 }
 
 
-
-
-
-/* Mini Piano */
+/* =========================================================
+   MINI PIANO
+========================================================= */
 
 .mini-piano {
 
+    position: relative;
 
-    width:260px;
+    width:
 
+        clamp(
+            180px,
+            52vw,
+            280px
+        );
 
-    height:90px;
+    height:
 
-
-    position:relative;
-
+        clamp(
+            65px,
+            13vh,
+            100px
+        );
 
     background:
 
+        linear-gradient(
+            180deg,
+            #222,
+            #050505
+        );
 
-    linear-gradient(
-
-        180deg,
-
-        #222,
-
-        #050505
-
-    );
-
-
-
-    border-radius:10px 10px 25px 25px;
-
-
+    border-radius:
+        10px 10px 25px 25px;
 
     box-shadow:
 
+        0 20px 50px rgba(0,0,0,.8),
 
-    0 20px 50px rgba(0,0,0,.8),
+        0 0 30px rgba(255,215,100,.3);
 
-
-    0 0 30px rgba(255,215,100,.3);
-
-
-
-    overflow:hidden;
-
-
-
+    overflow: hidden;
 }
 
 
-
-
+/* =========================================================
+   WHITE KEYS
+========================================================= */
 
 .white-keys {
 
+    position: absolute;
 
-    position:absolute;
+    bottom: 0;
 
+    left:
 
-    bottom:0;
+        clamp(
+            7px,
+            2vw,
+            10px
+        );
 
+    right:
 
-    left:10px;
+        clamp(
+            7px,
+            2vw,
+            10px
+        );
 
+    height:
 
-    right:10px;
+        clamp(
+            42px,
+            8vh,
+            70px
+        );
 
-
-    height:60px;
-
-
-    display:flex;
-
-
-
+    display: flex;
 }
-
-
-
 
 
 .white-keys span {
 
+    flex: 1;
 
-    flex:1;
+    background: #fff;
 
-
-    background:#fff;
-
-
-    border-right:1px solid #aaa;
-
-
-
+    border-right:
+        1px solid #aaa;
 }
 
 
-
-
+/* =========================================================
+   BLACK KEYS
+========================================================= */
 
 .black-keys {
 
+    position: absolute;
 
-    position:absolute;
+    top: 0;
 
+    left: 14%;
 
-    top:0;
+    width: 73%;
 
+    height:
 
-    left:35px;
+        clamp(
+            25px,
+            5vh,
+            42px
+        );
 
+    display: flex;
 
-    width:190px;
+    justify-content: space-around;
 
-
-    height:35px;
-
-
-
-    display:flex;
-
-
-    justify-content:space-around;
-
-
-    z-index:2;
-
-
-
+    z-index: 2;
 }
-
-
-
 
 
 .black-keys span {
 
+    width:
 
-    width:18px;
+        clamp(
+            10px,
+            4vw,
+            20px
+        );
 
+    height: 100%;
 
-    height:35px;
+    background: #111;
 
-
-    background:#111;
-
-
-    border-radius:0 0 5px 5px;
-
-
-
+    border-radius:
+        0 0 5px 5px;
 }
 
 
-
-
+/* =========================================================
+   PIANO CAPTION
+========================================================= */
 
 .piano-caption {
 
+    margin-top:
 
-    margin-top:20px;
+        clamp(
+            6px,
+            1vh,
+            14px
+        );
 
+    color: #ffe8a0;
 
-    color:#ffe8a0;
+    font-size:
 
+        clamp(
+            .7rem,
+            1.8vw,
+            1rem
+        );
 
-    font-size:1rem;
+    letter-spacing:
 
+        clamp(
+            .5px,
+            .2vw,
+            1px
+        );
 
-    letter-spacing:1px;
+    line-height: 1.3;
 
-
-
+    white-space: nowrap;
 }
 
 
-
-
-
-/* =====================================
+/* =========================================================
    GOLD WAVE
-===================================== */
-
+========================================================= */
 
 .gold-wave {
 
+    position: absolute;
 
-    position:absolute;
+    bottom: 0;
 
+    left: 0;
 
-    bottom:0;
+    width: 100%;
 
+    height:
 
-    left:0;
+        clamp(
+            40px,
+            10vh,
+            80px
+        );
 
+    display: flex;
 
-    width:100%;
+    justify-content: space-around;
 
+    opacity: .4;
 
-    height:80px;
-
-
-    display:flex;
-
-
-    justify-content:space-around;
-
-
-    opacity:.4;
-
-
-
+    pointer-events: none;
 }
-
-
-
 
 
 .gold-wave span {
 
+    width: 35%;
 
-    width:35%;
-
-
-    height:100%;
-
-
+    height: 100%;
 
     background:
 
-
-    radial-gradient(
-
-        ellipse,
-
-        rgba(255,215,100,.3),
-
-        transparent 70%
-
-    );
-
-
+        radial-gradient(
+            ellipse,
+            rgba(255,215,100,.3),
+            transparent 70%
+        );
 }
-/* =====================================
-   SUCCESS SCREEN
-===================================== */
 
+
+/* =========================================================
+   SUCCESS SCREEN
+========================================================= */
 
 .success-screen {
 
+    position: fixed;
 
-    position:fixed;
+    inset: 0;
 
+    width: 100%;
 
-    inset:0;
+    height: 100dvh;
 
+    min-height: 100svh;
 
-    z-index:50;
+    z-index: 50;
 
+    display: flex;
 
+    flex-direction: column;
 
-    display:flex;
+    justify-content: center;
 
+    align-items: center;
 
-    flex-direction:column;
+    text-align: center;
 
+    padding:
 
-    justify-content:center;
+        clamp(
+            20px,
+            5vw,
+            60px
+        );
 
+    box-sizing: border-box;
 
-    align-items:center;
-
-
-
-    text-align:center;
-
-
+    overflow: hidden;
 
     background:
 
+        radial-gradient(
+            circle,
+            rgba(255,215,100,.35),
+            transparent 40%
+        ),
 
-    radial-gradient(
+        linear-gradient(
+            135deg,
+            #12051f,
+            #020107
+        );
 
-        circle,
-
-        rgba(255,215,100,.35),
-
-        transparent 40%
-
-    ),
-
-
-    linear-gradient(
-
-        135deg,
-
-        #12051f,
-
-        #020107
-
-    );
-
-
-
-    backdrop-filter:blur(15px);
-
-
-
+    backdrop-filter: blur(15px);
 }
 
 
-
-
-
-/* =====================================
-   CONFETTI PIECES
-===================================== */
-
+/* =========================================================
+   CONFETTI
+========================================================= */
 
 .celebration-piece {
 
+    position: absolute;
 
-    position:absolute;
+    top: 0;
 
+    width:
 
-    top:0;
+        clamp(
+            5px,
+            1vw,
+            10px
+        );
 
+    height:
 
+        clamp(
+            10px,
+            2vw,
+            20px
+        );
 
-    width:10px;
-
-
-    height:20px;
-
-
-
-    border-radius:3px;
-
-
+    border-radius: 3px;
 
     background:
 
-
-    linear-gradient(
-
-        180deg,
-
-        #ffd86b,
-
-        #ff7eb3
-
-    );
-
-
+        linear-gradient(
+            180deg,
+            #ffd86b,
+            #ff7eb3
+        );
 
     box-shadow:
-
-
-    0 0 10px rgba(255,215,100,.8);
-
-
-
+        0 0 10px rgba(255,215,100,.8);
 }
 
 
-
-
-
-/* =====================================
+/* =========================================================
    GIFT
-===================================== */
-
+========================================================= */
 
 .surprise-gift {
 
+    font-size:
 
-    font-size:120px;
+        clamp(
+            70px,
+            16vw,
+            120px
+        );
 
+    margin-bottom:
 
-    margin-bottom:25px;
-
-
+        clamp(
+            12px,
+            3vh,
+            25px
+        );
 
     filter:
-
-
-    drop-shadow(
-
-        0 0 35px rgba(255,215,100,.8)
-
-    );
-
-
+        drop-shadow(
+            0 0 35px rgba(255,215,100,.8)
+        );
 
     animation:
-
-
-    giftBounce 2s infinite;
-
-
-
+        giftBounce 2s infinite;
 }
-
-
-
 
 
 @keyframes giftBounce {
 
-
-    0%,100% {
-
-
-        transform:translateY(0);
-
-
+    0%,
+    100% {
+        transform: translateY(0);
     }
-
-
 
     50% {
-
-
-        transform:translateY(-20px);
-
-
+        transform: translateY(-20px);
     }
-
 
 }
 
 
-
-
-
-/* =====================================
-   SUCCESS TITLE
-===================================== */
-
+/* =========================================================
+   SUCCESS TEXT
+========================================================= */
 
 .success-screen h2 {
 
+    max-width: 90vw;
+
+    margin: 0 0 12px;
 
     font-size:
 
+        clamp(
+            1.7rem,
+            7vw,
+            3.5rem
+        );
 
-    clamp(2rem,5vw,3.5rem);
-
-
-
-    margin-bottom:15px;
-
-
+    line-height: 1.1;
 
     background:
 
+        linear-gradient(
+            90deg,
+            #fff,
+            #ffd86b,
+            #fff
+        );
 
-    linear-gradient(
+    -webkit-background-clip: text;
 
-        90deg,
-
-        #fff,
-
-        #ffd86b,
-
-        #fff
-
-    );
-
-
-
-    -webkit-background-clip:text;
-
-
-    color:transparent;
-
-
+    color: transparent;
 
     text-shadow:
-
-
-    0 0 30px rgba(255,215,100,.5);
-
-
-
+        0 0 30px rgba(255,215,100,.5);
 }
-
-
-
 
 
 .success-screen p {
 
+    max-width: 85vw;
+
+    margin: 0;
 
     color:
+        rgba(255,255,255,.8);
 
+    font-size:
 
-    rgba(255,255,255,.8);
+        clamp(
+            .85rem,
+            3.5vw,
+            1.2rem
+        );
 
-
-
-    font-size:1.2rem;
-
-
-    letter-spacing:1px;
-
-
-
+    letter-spacing:
+        clamp(
+            .5px,
+            .2vw,
+            1px
+        );
 }
 
 
-
-
-
-/* =====================================
-   EXTRA SUCCESS SPARKLE
-===================================== */
-
+/* =========================================================
+   SUCCESS GLOW
+========================================================= */
 
 .success-screen::before {
 
+    content: "";
 
-    content:"";
+    position: absolute;
 
+    width:
 
-    position:absolute;
+        clamp(
+            250px,
+            70vw,
+            400px
+        );
 
+    aspect-ratio: 1;
 
-    width:400px;
-
-
-    height:400px;
-
-
-    border-radius:50%;
-
-
+    border-radius: 50%;
 
     background:
 
-
-    radial-gradient(
-
-        circle,
-
-        rgba(255,215,100,.3),
-
-        transparent 70%
-
-    );
-
-
+        radial-gradient(
+            circle,
+            rgba(255,215,100,.3),
+            transparent 70%
+        );
 
     animation:
+        successGlow 4s infinite;
 
-
-    successGlow 4s infinite;
-
-
-
+    pointer-events: none;
 }
-
-
-
 
 
 @keyframes successGlow {
 
-
     0% {
-
-
-        transform:scale(.8);
-
-
-        opacity:.5;
-
-
+        transform: scale(.8);
+        opacity: .5;
     }
-
-
 
     50% {
-
-
-        transform:scale(1.2);
-
-
-        opacity:1;
-
-
+        transform: scale(1.2);
+        opacity: 1;
     }
-
-
 
     100% {
-
-
-        transform:scale(.8);
-
-
-        opacity:.5;
-
-
+        transform: scale(.8);
+        opacity: .5;
     }
-
-
-}
-/* =====================================
-   RESPONSIVE DESIGN
-===================================== */
-
-
-/* Laptop / Desktop */
-
-@media (max-width:1200px){
-
-
-    .challenge-content {
-
-        width:90%;
-
-        padding:30px 15px;
-
-    }
-
-
-
-    .royal-crown {
-
-        font-size:60px;
-
-    }
-
-
-
-    .piano-stage {
-
-        margin-top:35px;
-
-    }
-
 
 }
 
 
+/* =========================================================
+   TABLET
+========================================================= */
 
-
-
-
-
-/* Tablet */
-
-@media (max-width:768px){
-
-
-
-    .challenge-scene {
-
-        overflow-y:auto;
-
-        align-items:flex-start;
-
-    }
-
-
+@media (max-width: 768px) {
 
     .challenge-content {
 
+        width: 100%;
 
-        min-height:100vh;
+        padding-left:
+            clamp(
+                12px,
+                4vw,
+                30px
+            );
 
-        justify-content:space-evenly;;
-
-
-        padding:
-
-        50px 20px 120px;
-
-
+        padding-right:
+            clamp(
+                12px,
+                4vw,
+                30px
+            );
     }
 
+    .answer-zone {
 
+        width: 94vw;
 
-    .royal-crown {
-
-
-        font-size:50px;
-
-
+        gap:
+            clamp(
+                12px,
+                5vw,
+                25px
+            );
     }
 
+}
 
 
-    .security-badge {
+/* =========================================================
+   MOBILE
+========================================================= */
 
+@media (max-width: 480px) {
 
-        font-size:.75rem;
+    .challenge-content {
 
-        padding:8px 18px;
+        padding-top:
+            clamp(
+                10px,
+                2vh,
+                20px
+            );
 
-
+        padding-bottom:
+            clamp(
+                10px,
+                2vh,
+                20px
+            );
     }
-
-
-
-    .main-title {
-
-
-        font-size:2.2rem;
-
-
-    }
-
-
 
     .question {
 
+        width: 94vw;
 
-        font-size:1.15rem;
+        font-size:
+            clamp(
+                1rem,
+                4.3vw,
+                1.35rem
+            );
 
-
+        line-height: 1.4;
     }
-
-
 
     .question span {
 
-
-        font-size:1.5rem;
-
-
+        font-size:
+            clamp(
+                1.3rem,
+                6vw,
+                1.8rem
+            );
     }
 
+    .hint {
 
-.answer-zone {
+        font-size:
+            clamp(
+                .72rem,
+                3.2vw,
+                .95rem
+            );
 
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 20px;
-
-    width: 100%;
-
-    margin: 35px auto;
-
-    position: relative;
-
-    min-height: 180px;
-}
-
-
-
-.magic-yes,
-.funny-no{
-
-    width:min(340px,92vw);
-
-    height:64px;
-
-    font-size:1.2rem;
-
-    border-radius:60px;
-}
-
-
-
-
-
-    .piano-stage {
-
-
-        margin-top:25px;
-
-
+        line-height: 1.4;
     }
-
-
-
-   .mini-piano{
-
-    width:min(360px,95vw);
-
-    height:110px;
-}
-
-
-
-    .piano-caption {
-
-
-        font-size:.85rem;
-
-
-    }
-
-
-}
-
-
-
-
-
-
-
-
-/* Small Mobile */
-
-@media (max-width:480px){
-
-
-
-    .challenge-content {
-
-
-        padding-left:15px;
-
-        padding-right:15px;
-
-
-    }
-
-
-
-
-    .main-title {
-
-
-        font-size:1.8rem;
-
-
-    }
-
-
-
-
-
-    .question {
-
-
-        line-height:1.5;
-
-
-    }
-
-
-
-
 
     .journey {
 
-
-        gap:7px;
-
-
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
+    .funny-reply {
 
+        min-height: 24px;
 
-
-    .journey-dot {
-
-
-        width:9px;
-
-        height:9px;
-
-
+        font-size:
+            clamp(
+                .75rem,
+                3.5vw,
+                1rem
+            );
     }
 
+    .answer-zone {
 
+        width: 94vw;
 
+        height:
+            clamp(
+                70px,
+                15vh,
+                105px
+            );
 
+        margin:
+            3px auto;
+    }
 
     .magic-yes,
-
     .funny-no {
 
+        width:
+            clamp(
+                115px,
+                31vw,
+                175px
+            );
 
-        width:190px;
+        height:
+            clamp(
+                44px,
+                7vh,
+                56px
+            );
 
-
-        padding:14px;
-
-
-        font-size:1rem;
-
-
+        font-size:
+            clamp(
+                .82rem,
+                3.5vw,
+                1.05rem
+            );
     }
-
-
-
-
-
-    .mini-piano {
-
-
-        width:190px;
-
-
-    }
-
-
-
-
-
-    .surprise-gift {
-
-
-        font-size:90px;
-
-
-    }
-
-
-
-    .success-screen h2 {
-
-
-        font-size:2rem;
-
-
-        padding:0 20px;
-
-
-    }
-
-
-}
-
-
-
-
-
-
-
-/* Small Height Screens
-   Example: Laptop with browser zoom
-*/
-
-
-@media (max-height:700px){
-
-
-
-    .challenge-content {
-
-
-        justify-content:flex-start;
-
-
-        padding-top:30px;
-
-
-    }
-
-
-
-    .royal-crown {
-
-
-        font-size:45px;
-
-
-    }
-
-
 
     .piano-stage {
 
-
-        transform:scale(.85);
-
-
+        margin-top: 5px;
     }
 
+    .mini-piano {
+
+        width:
+            clamp(
+                165px,
+                52vw,
+                240px
+            );
+
+        height:
+            clamp(
+                58px,
+                12vh,
+                82px
+            );
+    }
+
+    .piano-caption {
+
+        font-size:
+            clamp(
+                .62rem,
+                2.8vw,
+                .85rem
+            );
+    }
+
+    .music-note {
+
+        font-size:
+            clamp(
+                20px,
+                7vw,
+                30px
+            );
+    }
 
 }
-/* ==========================================================
-   PREMIUM MOBILE EXPERIENCE (Override)
-   Place this at the VERY END of FunnyChallenge.css
-========================================================== */
 
-@media screen and (max-width: 480px) {
 
-  html,
-  body {
-    width: 100%;
-    overflow-x: hidden;
-  }
+/* =========================================================
+   VERY SMALL PHONES
+   iPhone SE / 320-375px
+========================================================= */
 
-  .challenge-scene {
-    min-height: 100dvh;
-    padding: 20px 0;
-    align-items: center;
-    justify-content: center;
-  }
+@media (max-width: 375px) {
 
- .gold-glow{
+    .challenge-content {
 
-    width:140vw;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
-    height:140vw;
+    .question {
 
-    max-width:700px;
+        font-size:
+            clamp(
+                .92rem,
+                4.1vw,
+                1.15rem
+            );
 
-    max-height:700px;
+        line-height: 1.32;
+    }
 
-    opacity:1;
+    .question span {
 
-    filter:blur(70px);
-}
+        font-size:
+            clamp(
+                1.15rem,
+                5.5vw,
+                1.5rem
+            );
+    }
 
-  .challenge-content {
+    .hint {
 
-    width: 100%;
-    max-width: 100%;
+        font-size: .7rem;
 
-    padding:
-      40px
-      22px
-      70px;
+        line-height: 1.3;
+    }
 
-    min-height: auto;
+    .journey {
 
-    justify-content:space-evenly;
-  }
+        gap: 5px;
+    }
 
-  /* Crown */
+    .journey-dot {
 
-  .royal-crown {
+        width: 7px;
+        height: 7px;
+    }
 
-    font-size: 62px;
+    .answer-zone {
 
-    margin-bottom: 12px;
-  }
+        height: 70px;
 
-  /* Badge */
+        gap: 10px;
+    }
 
-  .security-badge {
+    .magic-yes,
+    .funny-no {
 
-    font-size: .82rem;
+        width:
+            clamp(
+                105px,
+                30vw,
+                135px
+            );
 
-    padding: 10px 18px;
+        height: 44px;
 
-    letter-spacing: 1px;
+        font-size: .8rem;
+    }
 
-    margin-bottom: 18px;
-  }
+    .mini-piano {
 
-  /* Title */
-.main-title{
+        width: 175px;
 
-    font-size:clamp(2.6rem,8vw,3.5rem);
+        height: 58px;
+    }
 
-    width:95%;
+    .white-keys {
 
-    margin:auto;
+        height: 38px;
+    }
 
-    margin-bottom:22px;
-}
+    .black-keys {
 
-  /* Question */
-.question{
+        height: 22px;
+    }
 
-    width:95%;
+    .piano-caption {
 
-    font-size:1.45rem;
+        margin-top: 5px;
 
-    line-height:1.8;
-}
-
-.question span{
-
-    font-size:2rem;
-}
-
-  .hint {
-
-    font-size: 1rem;
-
-    line-height: 1.8;
-
-    margin-bottom: 24px;
-  }
-
-  /* Progress */
-
-  .journey {
-
-    gap: 8px;
-
-    margin: 18px 0;
-  }
-
-  .journey-dot {
-
-    width: 11px;
-
-    height: 11px;
-  }
-
-  .funny-reply {
-
-    min-height: 40px;
-
-    font-size: 1.15rem;
-
-    margin-bottom: 20px;
-  }
-
-  /* Buttons */
-
- .answer-zone {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 20px;
-
-    width: 100%;
-
-    margin: 35px auto;
-
-    position: relative;
-
-    min-height: 180px;
-}
-
-  .magic-yes,
-  .funny-no {
-
-    width: 260px;
-
-    max-width: 90vw;
-
-    height: 62px;
-
-    padding: 0;
-
-    font-size: 1.15rem;
-
-    border-radius: 60px;
-  }
-
-  /* NO movement */
-
-  .escape-container {
-
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    width: 100%;
-
-    height: 70px;
-}
-
-  /* Piano */
-
-  .piano-stage {
-
-    margin-top: 45px;
-
-    transform: scale(1);
-  }
-
-  .piano-light {
-
-    width: 300px;
-
-    height: 120px;
-  }
-
-  .mini-piano {
-
-    width: 280px;
-
-    height: 100px;
-  }
-
-  .white-keys {
-
-    height: 70px;
-  }
-
-  .black-keys {
-
-    width: 205px;
-
-    left: 38px;
-  }
-
-  .black-keys span {
-
-    height: 42px;
-
-    width: 20px;
-  }
-
-  .piano-caption {
-
-    margin-top: 18px;
-
-    font-size: .95rem;
-
-    line-height: 1.6;
-  }
-
-  /* Success */
-
-  .surprise-gift {
-
-    font-size: 100px;
-  }
-
-  .success-screen h2 {
-
-    font-size: 2.2rem;
-
-    padding: 0 20px;
-  }
-
-  .success-screen p {
-
-    padding: 0 25px;
-
-    font-size: 1rem;
-  }
-
-  /* Floating notes */
-
-  .music-note {
-
-    font-size: 28px;
-  }
+        font-size: .62rem;
+    }
 
 }
 
 
-/* Small phones */
+/* =========================================================
+   VERY SHORT MOBILE SCREENS
+   iPhone SE / short viewport
+========================================================= */
 
-@media screen and (max-width: 360px) {
+@media (max-height: 700px) and (max-width: 768px) {
 
-  .main-title {
+    .challenge-content {
 
-    font-size: 2rem;
-  }
+        transform: scale(
+            clamp(
+                .78,
+                100vh / 760,
+                1
+            )
+        );
 
-  .question {
+        transform-origin: center center;
+    }
 
-    font-size: 1.08rem;
-  }
+    .gold-glow {
 
-  .question span {
+        opacity: .8;
+    }
 
-    font-size: 1.45rem;
-  }
+    .piano-stage {
 
-  .magic-yes,
-  .funny-no {
-
-    width: 220px;
-  }
-
-  .mini-piano {
-
-    width: 240px;
-  }
+        margin-top: 2px;
+    }
 
 }
 
 
-/* Landscape phones */
+/* =========================================================
+   EXTRA SHORT PHONES
+========================================================= */
 
-@media (max-height:600px) and (orientation:landscape) {
+@media (max-height: 620px) and (max-width: 480px) {
 
-  .challenge-content {
+    .challenge-content {
 
-    padding-top: 20px;
+        transform: scale(.82);
 
-    padding-bottom: 20px;
-  }
+        transform-origin: center center;
+    }
 
-  .royal-crown {
+    .question {
 
-    font-size: 45px;
-  }
+        margin-bottom: 3px;
+    }
 
-  .main-title {
+    .hint {
 
-    font-size: 2rem;
-  }
+        margin-bottom: 3px;
+    }
 
-  .piano-stage {
+    .journey {
 
-    transform: scale(.85);
+        margin: 3px 0;
+    }
 
-    margin-top: 20px;
-  }
+    .answer-zone {
+
+        margin: 2px auto;
+
+        height: 62px;
+    }
+
+    .piano-stage {
+
+        transform: scale(.9);
+
+        transform-origin: center top;
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (
+    max-height: 600px
+) and (
+    orientation: landscape
+) {
+
+    .challenge-content {
+
+        padding:
+            8px 20px;
+    }
+
+    .question {
+
+        font-size:
+            clamp(
+                .9rem,
+                2.5vw,
+                1.2rem
+            );
+
+        line-height: 1.25;
+    }
+
+    .question span {
+
+        font-size:
+            clamp(
+                1rem,
+                3vw,
+                1.5rem
+            );
+    }
+
+    .hint {
+
+        font-size: .72rem;
+    }
+
+    .journey {
+
+        margin: 3px 0;
+    }
+
+    .answer-zone {
+
+        height: 58px;
+
+        margin: 2px auto;
+    }
+
+    .magic-yes,
+    .funny-no {
+
+        height: 42px;
+    }
+
+    .piano-stage {
+
+        transform: scale(.7);
+
+        transform-origin: center top;
+
+        margin-top: 30px;
+    }
+
+    .piano-caption {
+
+        margin-top: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gold-glow,
+    .particle,
+    .surprise-gift {
+
+        animation: none;
+    }
 
 }

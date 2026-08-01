@@ -17,116 +17,124 @@ const positions = [
 ];
 
 export default function FallingPhotos({
-
     audioRef,
     onPhotoClick,
     paused,
     onAnimationFinished
-
 }) {
 
     return (
 
-        <>
+        <div className="falling-photos-container">
 
-            {memories.map((memory, index) => (
+            {memories.map((memory, index) => {
 
-                <motion.div
+                const position = positions[index % positions.length];
 
-                    key={memory.id}
+                return (
 
-                    className="memory-photo"
+                    <motion.div
 
-                    style={{
-                        left: `${positions[index].x}%`,
-                        top: `${positions[index].y}%`
-                    }}
+                        key={memory.id}
 
-                    initial={{
-                        y: -900,
-                        opacity: 0,
-                        scale: .8,
-                        rotate: -25 + Math.random() * 50
-                    }}
+                        className="memory-photo"
 
-                    animate={{
-                        y: 0,
-                        opacity: 1,
-                        scale: 1,
-                        rotate: -8 + Math.random() * 16
-                    }}
-
-                   transition={{
-    delay: index * 0.25,
-    duration: 1.2,
-    type: "spring",
-    bounce: 0.35,
-}}
-
-onAnimationComplete={() => {
-    if (
-        index === memories.length - 1 &&
-        typeof onAnimationFinished === "function"
-    ) {
-        onAnimationFinished();
-    }
-}}
-
-                    whileHover={{
-                        scale: 1.08,
-                        rotate: 0,
-                        y: paused ? 0 : -10
-                    }}
-
-                    whileTap={{
-                        scale: .92
-                    }}
-
-                    onClick={() => {
-
-                        audioRef.current.pause();
-                        audioRef.current.currentTime = 0;
-
-                        audioRef.current.src = memory.song;
-                        audioRef.current.loop = true;
-
-                        audioRef.current.play();
-
-                        onPhotoClick(memory);
-
-                    }}
-
-                >
-
-                    <motion.img
-
-                        src={memory.image}
-
-                        alt=""
-
-                        draggable="false"
-
-                        animate={
-                            paused
-                                ? {}
-                                : {
-                                    y: [0, -8, 0]
-                                }
-                        }
-
-                        transition={{
-                            repeat: Infinity,
-                            duration: 3 + index % 3,
-                            ease: "easeInOut"
+                        style={{
+                            "--photo-x": `${position.x}%`,
+                            "--photo-y": `${position.y}%`
                         }}
 
-                    />
+                        initial={{
+                            y: -900,
+                            opacity: 0,
+                            scale: 0.8,
+                            rotate: -25 + Math.random() * 50
+                        }}
 
-                </motion.div>
+                        animate={{
+                            y: 0,
+                            opacity: 1,
+                            scale: 1,
+                            rotate: -8 + Math.random() * 16
+                        }}
 
-            ))}
+                        transition={{
+                            delay: index * 0.25,
+                            duration: 1.2,
+                            type: "spring",
+                            bounce: 0.35
+                        }}
 
-        </>
+                        onAnimationComplete={() => {
+
+                            if (
+                                index === memories.length - 1 &&
+                                typeof onAnimationFinished === "function"
+                            ) {
+                                onAnimationFinished();
+                            }
+
+                        }}
+
+                        whileHover={{
+                            scale: 1.08,
+                            rotate: 0,
+                            y: paused ? 0 : -10
+                        }}
+
+                        whileTap={{
+                            scale: 0.94
+                        }}
+
+                        onClick={() => {
+
+                            audioRef.current.pause();
+
+                            audioRef.current.currentTime = 0;
+
+                            audioRef.current.src = memory.song;
+
+                            audioRef.current.loop = true;
+
+                            audioRef.current.play();
+
+                            onPhotoClick(memory);
+
+                        }}
+
+                    >
+
+                        <motion.img
+
+                            src={memory.image}
+
+                            alt=""
+
+                            draggable="false"
+
+                            animate={
+                                paused
+                                    ? {}
+                                    : {
+                                        y: [0, -8, 0]
+                                    }
+                            }
+
+                            transition={{
+                                repeat: Infinity,
+                                duration: 3 + index % 3,
+                                ease: "easeInOut"
+                            }}
+
+                        />
+
+                    </motion.div>
+
+                );
+
+            })}
+
+        </div>
 
     );
 

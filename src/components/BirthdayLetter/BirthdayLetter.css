@@ -324,3 +324,216 @@ line-height:2.2;
 letter-spacing:.4px;
 
 }
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+   iPhone SE -> All Modern Phones
+========================================================== */
+
+@media (max-width: 430px) {
+
+    .letter-scene{
+
+        width:100%;
+        min-height:100svh;
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        padding:clamp(14px,4vw,24px);
+
+        overflow-x:hidden;
+
+    }
+
+    .birthday-letter{
+
+        width:min(94vw,520px);
+
+        padding:
+            clamp(28px,7vw,42px)
+            clamp(18px,5vw,28px)
+            clamp(30px,8vw,42px);
+
+        border-radius:clamp(14px,4vw,20px);
+
+        transform:none;
+
+        animation:paperFloat 5s ease-in-out infinite;
+
+    }
+
+    .birthday-letter::after{
+
+        inset:clamp(10px,3vw,16px);
+
+    }
+
+    .birthday-letter::before{
+
+        height:8px;
+
+    }
+
+    /* ==========================
+       Heading
+    ========================== */
+
+    .birthday-letter h1{
+
+        font-size:clamp(2rem,9vw,3rem);
+
+        line-height:1.1;
+
+        margin-bottom:10px;
+
+    }
+
+    .divider{
+
+        width:clamp(70px,22vw,110px);
+
+        margin:
+            clamp(12px,3vw,18px)
+            auto
+            clamp(22px,6vw,34px);
+
+    }
+
+    /* ==========================
+       Greeting
+    ========================== */
+
+    .greeting{
+
+        font-size:clamp(1.35rem,6vw,1.9rem);
+
+        margin-bottom:18px;
+
+    }
+
+    /* ==========================
+       Paragraphs
+    ========================== */
+
+    .birthday-letter p{
+
+        font-size:clamp(.95rem,3.9vw,1.08rem);
+
+        line-height:1.9;
+
+        margin-bottom:16px;
+
+        text-align:justify;
+
+    }
+
+    /* ==========================
+       Watermark
+    ========================== */
+
+    .watermark{
+
+        right:12px;
+
+        bottom:18px;
+
+        font-size:clamp(90px,24vw,130px);
+
+    }
+
+    /* ==========================
+       Seal
+    ========================== */
+
+    .paper-seal{
+
+        width:clamp(38px,11vw,46px);
+
+        height:clamp(38px,11vw,46px);
+
+        font-size:clamp(15px,4vw,18px);
+
+    }
+
+    /* ==========================
+       Signature
+    ========================== */
+
+    .signature{
+
+        margin-top:34px;
+
+        font-size:clamp(1.5rem,6vw,1.9rem);
+
+    }
+
+    .signature span{
+
+        font-size:clamp(1.7rem,6vw,2.2rem);
+
+    }
+
+    /* ==========================
+       Button
+    ========================== */
+
+    .continue-btn{
+
+        width:100%;
+
+        max-width:320px;
+
+        margin:34px auto 0;
+
+        padding:16px;
+
+        font-size:clamp(.9rem,3.8vw,1rem);
+
+        letter-spacing:1px;
+
+        border-radius:999px;
+
+    }
+
+}
+@media (max-width:375px){
+
+    .birthday-letter{
+
+        width:95vw;
+
+        padding:24px 16px 28px;
+
+    }
+
+    .birthday-letter h1{
+
+        font-size:1.9rem;
+
+    }
+
+    .birthday-letter p{
+
+        font-size:.93rem;
+
+        line-height:1.75;
+
+    }
+
+    .signature{
+
+        margin-top:26px;
+
+    }
+
+    .continue-btn{
+
+        margin-top:28px;
+
+        padding:14px;
+
+    }
+
+}

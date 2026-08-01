@@ -1,511 +1,981 @@
-/* ===========================
-   Overlay
-=========================== */
+/* =========================================================
+   FEEDBACK OVERLAY
+========================================================= */
 
 .feedback-overlay {
+
     position: fixed;
     inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 100dvh;
+
     z-index: 9999;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    padding: 30px 20px;
+    /*
+       Safe spacing around modal.
+       clamp makes it responsive automatically.
+    */
+    padding:
+        clamp(12px, 3vw, 30px)
+        clamp(10px, 3vw, 25px);
 
-    overflow-y: auto;
+    overflow: auto;
 
     -webkit-overflow-scrolling: touch;
+
+    box-sizing: border-box;
+
 }
 
-/* ===========================
-   Background Blur
-=========================== */
 
-.feedback-backdrop{
-    position:absolute;
-    inset:0;
+/* =========================================================
+   BACKDROP
+========================================================= */
 
-    background:rgba(0,0,0,.65);
+.feedback-backdrop {
 
-    /* backdrop-filter:blur(12px); */
+    position: fixed;
 
-    animation:fadeBackdrop .5s ease;
+    inset: 0;
 
-     backdrop-filter:blur(18px);
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, .68);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    animation: fadeBackdrop .5s ease;
+
 }
 
-/* ===========================
-   Floating Card
-=========================== */
+
+/* =========================================================
+   FEEDBACK MODAL
+========================================================= */
+
 .feedback-modal {
 
     position: relative;
+
     z-index: 2;
 
-    width: min(720px, 95vw);
+    /*
+       Desktop:
+       maximum width = 720px
 
-    max-height: 90vh;
-
-    overflow-y: auto;
-
-    padding: 45px;
-
-    border-radius: 30px;
-
-    background: linear-gradient(
-        145deg,
-        rgba(18,18,18,.96),
-        rgba(32,32,32,.97)
+       Mobile:
+       automatically becomes smaller.
+    */
+    width: min(
+        720px,
+        calc(100vw - clamp(20px, 6vw, 50px))
     );
 
-    border: 2px solid rgba(212,175,55,.8);
+    /*
+       Important for phones with browser bars.
+    */
+    max-height: min(
+        90dvh,
+        850px
+    );
+
+    /*
+       Prevent horizontal overflow.
+    */
+    box-sizing: border-box;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding:
+        clamp(24px, 5vw, 45px)
+        clamp(18px, 5vw, 45px);
+
+    border-radius:
+        clamp(18px, 4vw, 30px);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(18,18,18,.97),
+            rgba(32,32,32,.98)
+        );
+
+    border:
+        2px solid rgba(212,175,55,.8);
 
     box-shadow:
+
         0 30px 90px rgba(0,0,0,.7),
+
         0 0 40px rgba(212,175,55,.25);
 
     scrollbar-width: thin;
-    scrollbar-color: #d4af37 transparent;
-}
-.feedback-modal::-webkit-scrollbar{
-    width:8px;
-}
 
-.feedback-modal::-webkit-scrollbar-thumb{
-    background:#d4af37;
-    border-radius:20px;
-}
-
-.feedback-modal::-webkit-scrollbar-track{
-    background:transparent;
-}
-
-/* Gold Shine */
-
-.feedback-modal::before{
-
-content:"";
-
-position:absolute;
-
-top:-120%;
-
-left:-40%;
-
-width:70%;
-
-height:320%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.08),
-
-transparent
-
-);
-
-transform:rotate(25deg);
-
-animation:shine 8s linear infinite;
-
-pointer-events:none;
+    scrollbar-color:
+        #d4af37
+        transparent;
 
 }
 
-/* ===========================
- Floating Wrapper
-=========================== */
 
-.floating-wrapper{
+/* =========================================================
+   CUSTOM SCROLLBAR
+========================================================= */
 
-    display:flex;
+.feedback-modal::-webkit-scrollbar {
 
-    flex-direction:column;
-
-    align-items:center;
-
-    gap:18px;
-
-    padding-bottom:20px;
+    width: 7px;
 
 }
 
-/* ===========================
- Heading
-=========================== */
+.feedback-modal::-webkit-scrollbar-thumb {
 
-.feedback-modal h1{
+    background: #d4af37;
 
-font-size:2.7rem;
-
-margin-bottom:12px;
-
-color:#f7da83;
-
-font-family:Georgia,serif;
-
-text-shadow:
-
-0 0 18px rgba(212,175,55,.4);
+    border-radius: 20px;
 
 }
 
-.feedback-modal p{
+.feedback-modal::-webkit-scrollbar-track {
 
-font-size:18px;
-
-margin-bottom:35px;
-
-color:#ececec;
-
-line-height:1.7;
+    background: transparent;
 
 }
 
-/* ===========================
- Inputs
-=========================== */
+
+/* =========================================================
+   GOLD SHINE
+========================================================= */
+
+.feedback-modal::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -120%;
+    left: -40%;
+
+    width: 70%;
+    height: 320%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    transform: rotate(25deg);
+
+    animation: shine 8s linear infinite;
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   FLOATING CONTENT
+========================================================= */
+
+.floating-wrapper {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: clamp(10px, 2vw, 18px);
+
+    padding-bottom:
+        clamp(10px, 2vw, 20px);
+
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.feedback-modal h1 {
+
+    width: 100%;
+
+    margin:
+
+        0
+        0
+        clamp(5px, 1vw, 12px);
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+
+    /*
+       Small phone: ~28px
+       Desktop: ~43px
+    */
+    font-size:
+        clamp(
+            1.65rem,
+            4vw,
+            2.7rem
+        );
+
+    line-height: 1.15;
+
+    color: #f7da83;
+
+    text-shadow:
+
+        0 0 18px
+        rgba(212,175,55,.4);
+
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.feedback-modal p {
+
+    width: 100%;
+
+    margin:
+
+        0
+        0
+        clamp(18px, 4vw, 35px);
+
+    text-align: center;
+
+    font-size:
+        clamp(
+            .9rem,
+            2vw,
+            1.125rem
+        );
+
+    line-height: 1.6;
+
+    color: #ececec;
+
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.feedback-modal form {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
 
 .feedback-modal input,
 .feedback-modal textarea,
-.feedback-modal select{
+.feedback-modal select {
 
-width:100%;
+    width: 100%;
 
-padding:17px;
+    box-sizing: border-box;
 
-margin:14px 0;
+    padding:
 
-border-radius:15px;
+        clamp(12px, 3vw, 17px);
 
-border:2px solid rgba(212,175,55,.55);
+    margin:
 
-background:#fffdf8;
+        clamp(7px, 1.5vw, 14px)
+        0;
 
-font-size:17px;
+    border:
 
-color:#4a3515;
+        2px solid
+        rgba(212,175,55,.55);
 
-transition:.35s;
+    border-radius:
+        clamp(10px, 2vw, 15px);
+
+    background: #fffdf8;
+
+    font-family: inherit;
+
+    font-size:
+        clamp(
+            .9rem,
+            2vw,
+            1.05rem
+        );
+
+    color: #4a3515;
+
+    transition: .35s;
+
+    /*
+       Important for mobile:
+       prevents iOS zoom when font is too small.
+    */
+    min-height: 50px;
 
 }
 
-.feedback-modal textarea{
 
-resize:none;
+/* =========================================================
+   TEXTAREA
+========================================================= */
 
-height:170px;
+.feedback-modal textarea {
+
+    resize: none;
+
+    height:
+        clamp(
+            120px,
+            22vw,
+            170px
+        );
+
+    min-height: 120px;
+
+    line-height: 1.5;
 
 }
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.feedback-modal select {
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
 
 .feedback-modal input:focus,
 .feedback-modal textarea:focus,
-.feedback-modal select:focus{
+.feedback-modal select:focus {
 
-outline:none;
+    outline: none;
 
-border-color:#f5d87a;
+    border-color: #f5d87a;
 
-box-shadow:
+    box-shadow:
 
-0 0 20px rgba(212,175,55,.45);
-
-}
-
-/* ===========================
- Button
-=========================== */
-
-.send-btn{
-
-margin-top:25px;
-
-padding:18px 60px;
-
-border:none;
-
-border-radius:50px;
-
-font-size:18px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-background:
-
-linear-gradient(
-
-135deg,
-
-#8f6300,
-
-#f5d46b,
-
-#8f6300
-
-);
-
-background-size:250%;
-
-color:white;
-
-transition:.45s;
+        0 0 20px
+        rgba(212,175,55,.45);
 
 }
 
-.send-btn:hover{
 
-background-position:right;
+/* =========================================================
+   SEND BUTTON
+========================================================= */
 
-transform:translateY(-4px);
+.send-btn {
 
-box-shadow:
+    display: block;
 
-0 10px 35px rgba(212,175,55,.45);
+    width:
+        min(
+            100%,
+            300px
+        );
 
-}
+    margin:
 
-/* ===========================
- Success
-=========================== */
+        clamp(15px, 3vw, 25px)
+        auto
+        0;
 
-.feedback-success{
+    padding:
 
-font-size:26px;
+        clamp(13px, 3vw, 18px)
+        clamp(25px, 6vw, 60px);
 
-padding:35px 0;
+    border: none;
 
-color:#ffd978;
+    border-radius: 50px;
 
-line-height:1.8;
+    font-size:
+        clamp(
+            .9rem,
+            2vw,
+            1.125rem
+        );
 
-}
+    font-weight: bold;
 
-/* ===========================
- Share
-=========================== */
+    cursor: pointer;
 
-.share-title{
+    background:
 
-margin-top:40px;
+        linear-gradient(
+            135deg,
+            #8f6300,
+            #f5d46b,
+            #8f6300
+        );
 
-font-size:24px;
+    background-size: 250%;
 
-color:#f5d46d;
+    color: white;
 
-margin-bottom:18px;
+    transition: .45s;
 
-}
+    box-shadow:
 
-.share-icons{
-
-display:flex;
-
-justify-content:center;
-
-gap:18px;
-
-align-items:center;
-
-}
-
-.copy-link{
-
-width:54px;
-
-height:54px;
-
-border:none;
-
-border-radius:50%;
-
-background:#d4af37;
-
-color:white;
-
-font-size:20px;
-
-cursor:pointer;
-
-transition:.35s;
+        0 5px 20px
+        rgba(212,175,55,.2);
 
 }
 
-.copy-link:hover{
 
-transform:scale(1.12);
+/* =========================================================
+   SEND BUTTON HOVER
+========================================================= */
 
-}
+.send-btn:hover {
 
-/* ===========================
- Close
-=========================== */
+    background-position: right;
 
-.close-modal{
+    transform: translateY(-4px);
 
-position:absolute;
+    box-shadow:
 
-top:20px;
-
-right:20px;
-
-width:42px;
-
-height:42px;
-
-border:none;
-
-border-radius:50%;
-
-background:#2a2a2a;
-
-color:#ffd978;
-
-cursor:pointer;
-
-font-size:18px;
-
-transition:.35s;
+        0 10px 35px
+        rgba(212,175,55,.45);
 
 }
 
-.close-modal:hover{
 
-transform:rotate(180deg);
+/* =========================================================
+   DISABLED
+========================================================= */
 
-background:#d4af37;
+.send-btn:disabled {
 
-color:black;
+    opacity: .65;
 
-}
+    cursor: not-allowed;
 
-/* ===========================
- Animations
-=========================== */
-
-@keyframes shine{
-
-0%{
-
-transform:
-
-translateX(-220%)
-
-rotate(25deg);
+    transform: none;
 
 }
 
-100%{
 
-transform:
+/* =========================================================
+   SUCCESS MESSAGE
+========================================================= */
 
-translateX(320%)
+.feedback-success {
 
-rotate(25deg);
+    width: 100%;
 
-}
+    box-sizing: border-box;
 
-}
+    text-align: center;
 
-@keyframes fadeBackdrop{
+    padding:
 
-from{
+        clamp(20px, 5vw, 35px)
+        10px;
 
-opacity:0;
+    color: #ffd978;
 
-}
+    font-size:
+        clamp(
+            1.15rem,
+            3vw,
+            1.625rem
+        );
 
-to{
-
-opacity:1;
-
-}
-
-}
-
-/* ===========================
- Mobile
-=========================== */
-
-@media(max-width:768px){
-
-.feedback-modal{
-
-padding:30px 22px;
-
-width:92%;
+    line-height: 1.7;
 
 }
 
-.feedback-modal h1{
 
-font-size:2rem;
+/* =========================================================
+   SHARE TITLE
+========================================================= */
 
-}
+.share-title {
 
-.feedback-modal p{
+    width: 100%;
 
-font-size:15px;
+    margin-top:
+        clamp(22px, 5vw, 40px);
 
-}
+    margin-bottom:
+        clamp(10px, 3vw, 18px);
 
-.feedback-modal textarea{
+    text-align: center;
 
-height:130px;
+    font-size:
+        clamp(
+            1.05rem,
+            3vw,
+            1.5rem
+        );
 
-}
-
-.share-icons{
-
-gap:12px;
-
-}
-
-.send-btn{
-
-width:100%;
-
-padding:16px;
+    color: #f5d46d;
 
 }
 
-}
-@media (max-width:768px){
 
-.feedback-modal{
+/* =========================================================
+   SHARE ICONS
+========================================================= */
 
-    width:95%;
+.share-icons {
 
-    max-height:92vh;
+    width: 100%;
 
-    padding:28px 22px;
+    display: flex;
 
-}
+    justify-content: center;
 
-.feedback-modal h1{
+    align-items: center;
 
-    font-size:2rem;
+    flex-wrap: wrap;
 
-}
-
-.feedback-modal textarea{
-
-    height:150px;
+    gap:
+        clamp(10px, 3vw, 18px);
 
 }
 
-.send-btn{
 
-    width:100%;
+/* =========================================================
+   COPY BUTTON
+========================================================= */
+
+.copy-link {
+
+    width:
+        clamp(
+            46px,
+            12vw,
+            54px
+        );
+
+    height:
+        clamp(
+            46px,
+            12vw,
+            54px
+        );
+
+    flex-shrink: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #d4af37;
+
+    color: white;
+
+    font-size:
+        clamp(
+            17px,
+            4vw,
+            20px
+        );
+
+    cursor: pointer;
+
+    transition: .35s;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
 
 }
+
+
+/* =========================================================
+   COPY HOVER
+========================================================= */
+
+.copy-link:hover {
+
+    transform: scale(1.12);
+
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.close-modal {
+
+    position: absolute;
+
+    top:
+        clamp(10px, 3vw, 20px);
+
+    right:
+        clamp(10px, 3vw, 20px);
+
+    width:
+        clamp(
+            36px,
+            9vw,
+            42px
+        );
+
+    height:
+        clamp(
+            36px,
+            9vw,
+            42px
+        );
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #2a2a2a;
+
+    color: #ffd978;
+
+    cursor: pointer;
+
+    font-size:
+        clamp(
+            15px,
+            4vw,
+            18px
+        );
+
+    transition: .35s;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 20;
+
+}
+
+
+/* =========================================================
+   CLOSE HOVER
+========================================================= */
+
+.close-modal:hover {
+
+    transform: rotate(180deg);
+
+    background: #d4af37;
+
+    color: black;
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes shine {
+
+    0% {
+
+        transform:
+            translateX(-220%)
+            rotate(25deg);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(320%)
+            rotate(25deg);
+
+    }
+
+}
+
+
+@keyframes fadeBackdrop {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   iPhone SE / 320px–375px
+========================================================= */
+
+@media (max-width: 375px) {
+
+    .feedback-overlay {
+
+        align-items: flex-start;
+
+        padding:
+
+            10px
+            8px;
+
+    }
+
+    .feedback-modal {
+
+        width: calc(100vw - 16px);
+
+        max-height: 94dvh;
+
+        padding:
+
+            42px
+            15px
+            20px;
+
+        border-radius: 18px;
+
+    }
+
+    .feedback-modal h1 {
+
+        font-size: clamp(
+            1.45rem,
+            7vw,
+            1.7rem
+        );
+
+        padding-inline: 25px;
+
+    }
+
+    .feedback-modal p {
+
+        font-size: .88rem;
+
+        margin-bottom: 15px;
+
+    }
+
+    .feedback-modal input,
+    .feedback-modal textarea,
+    .feedback-modal select {
+
+        font-size: 16px;
+
+        padding: 12px;
+
+    }
+
+    .feedback-modal textarea {
+
+        height: 115px;
+
+        min-height: 115px;
+
+    }
+
+    .send-btn {
+
+        width: 100%;
+
+        font-size: .9rem;
+
+        padding: 14px;
+
+    }
+
+    .share-title {
+
+        margin-top: 20px;
+
+    }
+
+}
+
+
+/* =========================================================
+   NORMAL MOBILE
+   376px–600px
+========================================================= */
+
+@media (min-width: 376px) and (max-width: 600px) {
+
+    .feedback-overlay {
+
+        padding: 12px;
+
+    }
+
+    .feedback-modal {
+
+        width: calc(100vw - 24px);
+
+        max-height: 93dvh;
+
+        padding:
+
+            45px
+            20px
+            22px;
+
+        border-radius: 20px;
+
+    }
+
+    .feedback-modal h1 {
+
+        font-size:
+            clamp(
+                1.6rem,
+                7vw,
+                2rem
+            );
+
+        padding-inline: 20px;
+
+    }
+
+    .feedback-modal p {
+
+        font-size: .95rem;
+
+    }
+
+    .feedback-modal textarea {
+
+        height: 130px;
+
+    }
+
+    .send-btn {
+
+        width: 100%;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+   601px–900px
+========================================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .feedback-modal {
+
+        width:
+            min(
+                90vw,
+                680px
+            );
+
+        max-height: 90dvh;
+
+    }
+
+}
+
+
+/* =========================================================
+   LANDSCAPE MOBILE
+========================================================= */
+
+@media (
+    max-height: 500px
+) and (
+    orientation: landscape
+) {
+
+    .feedback-overlay {
+
+        align-items: flex-start;
+
+        padding: 8px;
+
+    }
+
+    .feedback-modal {
+
+        max-height: 96dvh;
+
+        padding:
+
+            35px
+            20px
+            18px;
+
+    }
+
+    .feedback-modal textarea {
+
+        height: 90px;
+
+    }
+
+    .feedback-modal h1 {
+
+        font-size: 1.5rem;
+
+    }
 
 }

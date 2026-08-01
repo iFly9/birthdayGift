@@ -1,147 +1,1287 @@
-.memory-overlay{
+/* ==========================================================
+   MEMORY CARD
+   PREMIUM RESPONSIVE VERSION
+========================================================== */
 
-position:fixed;
 
-inset:0;
+/* ==========================================================
+   OVERLAY
+========================================================== */
 
-display:flex;
+.memory-overlay {
 
-justify-content:center;
+    position: fixed;
 
-align-items:center;
+    inset: 0;
 
-background:rgba(0,0,0,.55);
+    width: 100%;
+    height: 100%;
 
-backdrop-filter:blur(8px);
+    display: flex;
 
-z-index:999;
+    justify-content: center;
+
+    align-items: center;
+
+    box-sizing: border-box;
+
+    /*
+       Safe area support for iPhones
+    */
+    padding:
+
+        max(
+            12px,
+            env(safe-area-inset-top)
+        )
+
+        max(
+            12px,
+            env(safe-area-inset-right)
+        )
+
+        max(
+            12px,
+            env(safe-area-inset-bottom)
+        )
+
+        max(
+            12px,
+            env(safe-area-inset-left)
+        );
+
+    background:
+        rgba(0,0,0,.55);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    z-index: 99999;
+
+    /*
+       Prevent the entire page from becoming wider
+       than the viewport.
+    */
+    overflow: hidden;
 
 }
 
-.memory-card{
 
-display:flex;
+/* ==========================================================
+   MEMORY CARD
+========================================================== */
 
-gap:40px;
+.memory-card {
 
-background:#fffaf1;
+    position: relative;
 
-padding:35px;
+    display: flex;
 
-border-radius:24px;
+    align-items: center;
 
-box-shadow:0 25px 60px rgba(0,0,0,.4);
+    justify-content: center;
 
-max-width:900px;
+    gap:
+        clamp(
+            20px,
+            3vw,
+            40px
+        );
 
-width:90%;
+    width:
+        min(
+            90vw,
+            900px
+        );
 
-position:relative;
+    /*
+       Critical responsive height control
+    */
+    max-height:
+        calc(
+            100svh - 32px
+        );
 
-}
+    padding:
+        clamp(
+            20px,
+            3vw,
+            35px
+        );
 
-.memory-left img{
+    box-sizing: border-box;
 
-width:280px;
+    background:
+        #fffaf1;
 
-border-radius:18px;
-
-}
-
-.sticky-note{
-
-    width:340px;
-
-    background:#fff8c8;
-
-    color:#4b3520;
-
-    padding:28px;
-
-    border-radius:12px;
-
-    position:relative;
-
-    transform:rotate(-2deg);
+    border-radius:
+        clamp(
+            16px,
+            2vw,
+            24px
+        );
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.25);
+        0 25px 60px
+        rgba(0,0,0,.4);
 
-    font-family:"Caveat", cursive;
-
-}
-.sticky-note h2{
-
-    color:#7d4b15;
-
-    font-size:2rem;
-
-    margin-bottom:15px;
-
-    font-weight:700;
-
-}
-.sticky-note p{
-
-    color:#4a3b28;
-
-    font-size:1.2rem;
-
-    line-height:1.8;
-
-}
-.sticky-note span{
-
-    display:block;
-
-    margin-top:25px;
-
-    color:#b11226;
-
-    font-size:1.4rem;
-
-    font-weight:bold;
+    overflow: hidden;
 
 }
 
-.pin{
 
-    position:absolute;
+/* ==========================================================
+   LEFT IMAGE AREA
+========================================================== */
 
-    top:-16px;
+.memory-left {
 
-    left:50%;
+    flex:
+        1 1 45%;
 
-    transform:translateX(-50%);
+    min-width: 0;
 
-    width:26px;
+    display: flex;
 
-    height:26px;
+    justify-content: center;
 
-    background:#c62828;
+    align-items: center;
 
-    border-radius:50%;
+    /*
+       Keeps large images inside the card.
+    */
+    max-height:
+        calc(
+            100svh - 100px
+        );
+
+}
+
+
+/* ==========================================================
+   MEMORY IMAGE
+========================================================== */
+
+.memory-left img {
+
+    display: block;
+
+    width:
+        clamp(
+            220px,
+            30vw,
+            420px
+        );
+
+    /*
+       Important for portrait images.
+    */
+    max-width: 100%;
+
+    max-height:
+        calc(
+            100svh - 100px
+        );
+
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius:
+        clamp(
+            12px,
+            1.5vw,
+            18px
+        );
 
     box-shadow:
-        inset 0 2px 5px rgba(255,255,255,.4),
-        0 4px 10px rgba(0,0,0,.3);
+        0 12px 30px
+        rgba(0,0,0,.18);
 
 }
 
-.close-btn{
 
-position:absolute;
+/* ==========================================================
+   STICKY NOTE
+========================================================== */
 
-right:20px;
+.sticky-note {
 
-top:20px;
+    position: relative;
 
-border:none;
+    flex:
+        1 1 40%;
 
-background:none;
+    width:
+        clamp(
+            260px,
+            30vw,
+            340px
+        );
 
-font-size:24px;
+    max-width: 100%;
 
-cursor:pointer;
+    /*
+       Don't let a long note make the whole card
+       taller than the screen.
+    */
+    max-height:
+        calc(
+            100svh - 100px
+        );
+
+    box-sizing: border-box;
+
+    overflow-y: auto;
+
+    background:
+        #fff8c8;
+
+    color:
+        #4b3520;
+
+    padding:
+        clamp(
+            22px,
+            3vw,
+            28px
+        );
+
+    border-radius: 12px;
+
+    transform:
+        rotate(-2deg);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,.25);
+
+    font-family:
+        "Caveat",
+        cursive;
+
+    /*
+       Smooth scrolling if note is long.
+    */
+    -webkit-overflow-scrolling:
+        touch;
+
+}
+
+
+/* ==========================================================
+   NOTE HEADING
+========================================================== */
+
+.sticky-note h2 {
+
+    color:
+        #7d4b15;
+
+    font-size:
+        clamp(
+            1.5rem,
+            3vw,
+            2rem
+        );
+
+    line-height:
+        1.1;
+
+    margin-top: 0;
+
+    margin-bottom:
+        clamp(
+            10px,
+            2vw,
+            15px
+        );
+
+    font-weight:
+        700;
+
+}
+
+
+/* ==========================================================
+   NOTE TEXT
+========================================================== */
+
+.sticky-note p {
+
+    color:
+        #4a3b28;
+
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            1.2rem
+        );
+
+    line-height:
+        clamp(
+            1.5,
+            3vw,
+            1.8
+        );
+
+    margin:
+        0;
+
+}
+
+
+/* ==========================================================
+   SIGNATURE
+========================================================== */
+
+.sticky-note span {
+
+    display: block;
+
+    margin-top:
+        clamp(
+            18px,
+            3vw,
+            25px
+        );
+
+    color:
+        #b11226;
+
+    font-size:
+        clamp(
+            1.15rem,
+            2.5vw,
+            1.4rem
+        );
+
+    line-height:
+        1.2;
+
+    font-weight:
+        bold;
+
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON
+========================================================== */
+
+.close-btn {
+
+    position: absolute;
+
+    /*
+       Keep it safely inside the card.
+    */
+    top:
+        clamp(
+            10px,
+            1.5vw,
+            20px
+        );
+
+    right:
+        clamp(
+            10px,
+            1.5vw,
+            20px
+        );
+
+    width:
+        clamp(
+            32px,
+            3vw,
+            40px
+        );
+
+    height:
+        clamp(
+            32px,
+            3vw,
+            40px
+        );
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding: 0;
+
+    border: none;
+
+    background:
+        rgba(255,255,255,.7);
+
+    border-radius:
+        50%;
+
+    color:
+        #4b3520;
+
+    font-size:
+        clamp(
+            18px,
+            2vw,
+            24px
+        );
+
+    line-height:
+        1;
+
+    cursor:
+        pointer;
+
+    z-index:
+        100;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON HOVER
+========================================================== */
+
+.close-btn:hover {
+
+    transform:
+        scale(1.1);
+
+    background:
+        #fff;
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,.2);
+
+}
+
+
+/* ==========================================================
+   TABLET
+   601px - 900px
+========================================================== */
+
+@media (min-width:601px) and (max-width:900px) {
+
+    .memory-card {
+
+        width:
+            92vw;
+
+        gap:
+            clamp(
+                18px,
+                3vw,
+                28px
+            );
+
+        padding:
+            clamp(
+                18px,
+                3vw,
+                28px
+            );
+
+        max-height:
+            calc(
+                100svh - 24px
+            );
+
+    }
+
+
+    .memory-left img {
+
+        width:
+            clamp(
+                200px,
+                30vw,
+                300px
+            );
+
+        max-height:
+            calc(
+                100svh - 90px
+            );
+
+    }
+
+
+    .sticky-note {
+
+        width:
+            clamp(
+                220px,
+                32vw,
+                300px
+            );
+
+        max-height:
+            calc(
+                100svh - 90px
+            );
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   430px AND BELOW
+========================================================== */
+
+@media (max-width:430px) {
+
+    .memory-overlay {
+
+        align-items:
+            center;
+
+        justify-content:
+            center;
+
+        padding:
+
+            max(
+                10px,
+                env(safe-area-inset-top)
+            )
+
+            max(
+                10px,
+                env(safe-area-inset-right)
+            )
+
+            max(
+                10px,
+                env(safe-area-inset-bottom)
+            )
+
+            max(
+                10px,
+                env(safe-area-inset-left)
+            );
+
+    }
+
+
+    /* ======================================================
+       MOBILE CARD
+    ====================================================== */
+
+    .memory-card {
+
+        width:
+            94vw;
+
+        max-width:
+            94vw;
+
+        /*
+           Never allow card to exceed visible screen.
+        */
+        max-height:
+            calc(
+                100svh - 20px
+            );
+
+        display:
+            flex;
+
+        flex-direction:
+            column;
+
+        align-items:
+            center;
+
+        justify-content:
+            flex-start;
+
+        gap:
+            clamp(
+                12px,
+                3vh,
+                20px
+            );
+
+        padding:
+            clamp(
+                14px,
+                4vw,
+                20px
+            );
+
+        padding-top:
+            clamp(
+                44px,
+                10vw,
+                54px
+            );
+
+        border-radius:
+            18px;
+
+        overflow:
+            hidden;
+
+    }
+
+
+    /* ======================================================
+       MOBILE IMAGE AREA
+    ====================================================== */
+
+    .memory-left {
+
+        width:
+            100%;
+
+        flex:
+            0 0 auto;
+
+        max-height:
+            45svh;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+
+        align-items:
+            center;
+
+    }
+
+
+    /* ======================================================
+       MOBILE IMAGE
+    ====================================================== */
+
+    .memory-left img {
+
+        width:
+            auto;
+
+        /*
+           Responsive width but prevents oversized images.
+        */
+        max-width:
+            min(
+                78vw,
+                300px
+            );
+
+        height:
+            auto;
+
+        max-height:
+            42svh;
+
+        object-fit:
+            contain;
+
+        border-radius:
+            14px;
+
+    }
+
+
+    /* ======================================================
+       MOBILE NOTE
+    ====================================================== */
+
+    .sticky-note {
+
+        width:
+            min(
+                88vw,
+                330px
+            );
+
+        max-width:
+            100%;
+
+        /*
+           Leave room for image + card controls.
+        */
+        max-height:
+            35svh;
+
+        flex:
+            0 1 auto;
+
+        padding:
+            clamp(
+                18px,
+                5vw,
+                24px
+            );
+
+        box-sizing:
+            border-box;
+
+        overflow-y:
+            auto;
+
+        border-radius:
+            10px;
+
+        transform:
+            rotate(-1deg);
+
+    }
+
+
+    /* ======================================================
+       MOBILE NOTE HEADING
+    ====================================================== */
+
+    .sticky-note h2 {
+
+        font-size:
+            clamp(
+                1.35rem,
+                6vw,
+                1.7rem
+            );
+
+        line-height:
+            1.1;
+
+        margin-bottom:
+            10px;
+
+    }
+
+
+    /* ======================================================
+       MOBILE NOTE TEXT
+    ====================================================== */
+
+    .sticky-note p {
+
+        font-size:
+            clamp(
+                .95rem,
+                4.2vw,
+                1.1rem
+            );
+
+        line-height:
+            1.5;
+
+    }
+
+
+    /* ======================================================
+       MOBILE SIGNATURE
+    ====================================================== */
+
+    .sticky-note span {
+
+        margin-top:
+            14px;
+
+        font-size:
+            clamp(
+                1.05rem,
+                4.8vw,
+                1.3rem
+            );
+
+    }
+
+
+    /* ======================================================
+       MOBILE CLOSE BUTTON
+    ====================================================== */
+
+    .close-btn {
+
+        top:
+            10px;
+
+        right:
+            10px;
+
+        width:
+            34px;
+
+        height:
+            34px;
+
+        font-size:
+            19px;
+
+        background:
+            rgba(255,255,255,.85);
+
+    }
+
+}
+
+
+/* ==========================================================
+   IPHONE SE / SMALL PHONES
+   375px AND BELOW
+========================================================== */
+
+@media (max-width:375px) {
+
+    .memory-overlay {
+
+        padding:
+            8px;
+
+    }
+
+
+    .memory-card {
+
+        width:
+            94vw;
+
+        max-width:
+            94vw;
+
+        max-height:
+            calc(
+                100svh - 16px
+            );
+
+        padding:
+            12px;
+
+        padding-top:
+            42px;
+
+        gap:
+            10px;
+
+        border-radius:
+            16px;
+
+    }
+
+
+    /* ----------------------------------------------
+       IMAGE
+    ---------------------------------------------- */
+
+    .memory-left {
+
+        max-height:
+            40svh;
+
+    }
+
+
+    .memory-left img {
+
+        max-width:
+            76vw;
+
+        max-height:
+            38svh;
+
+        border-radius:
+            12px;
+
+    }
+
+
+    /* ----------------------------------------------
+       NOTE
+    ---------------------------------------------- */
+
+    .sticky-note {
+
+        width:
+            88vw;
+
+        max-width:
+            88vw;
+
+        max-height:
+            34svh;
+
+        padding:
+            16px;
+
+    }
+
+
+    .sticky-note h2 {
+
+        font-size:
+            clamp(
+                1.2rem,
+                5.8vw,
+                1.5rem
+            );
+
+        margin-bottom:
+            8px;
+
+    }
+
+
+    .sticky-note p {
+
+        font-size:
+            clamp(
+                .9rem,
+                4vw,
+                1rem
+            );
+
+        line-height:
+            1.45;
+
+    }
+
+
+    .sticky-note span {
+
+        font-size:
+            1.05rem;
+
+        margin-top:
+            12px;
+
+    }
+
+
+    /* ----------------------------------------------
+       CLOSE
+    ---------------------------------------------- */
+
+    .close-btn {
+
+        top:
+            8px;
+
+        right:
+            8px;
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+        font-size:
+            17px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   360px AND BELOW
+========================================================== */
+
+@media (max-width:360px) {
+
+    .memory-card {
+
+        width:
+            95vw;
+
+        max-width:
+            95vw;
+
+        padding:
+            10px;
+
+        padding-top:
+            40px;
+
+        gap:
+            8px;
+
+    }
+
+
+    .memory-left {
+
+        max-height:
+            37svh;
+
+    }
+
+
+    .memory-left img {
+
+        max-width:
+            74vw;
+
+        max-height:
+            35svh;
+
+    }
+
+
+    .sticky-note {
+
+        width:
+            90vw;
+
+        max-height:
+            35svh;
+
+        padding:
+            14px;
+
+    }
+
+
+    .sticky-note h2 {
+
+        font-size:
+            1.15rem;
+
+    }
+
+
+    .sticky-note p {
+
+        font-size:
+            .88rem;
+
+        line-height:
+            1.4;
+
+    }
+
+
+    .sticky-note span {
+
+        font-size:
+            1rem;
+
+    }
+
+}
+
+
+/* ==========================================================
+   SHORT MOBILE SCREENS
+   Example: iPhone SE / small Android
+========================================================== */
+
+@media (max-width:600px) and (max-height:700px) {
+
+    .memory-card {
+
+        max-height:
+            calc(
+                100svh - 12px
+            );
+
+        gap:
+            8px;
+
+        padding-top:
+            40px;
+
+    }
+
+
+    .memory-left {
+
+        max-height:
+            36svh;
+
+    }
+
+
+    .memory-left img {
+
+        max-height:
+            34svh;
+
+    }
+
+
+    .sticky-note {
+
+        max-height:
+            36svh;
+
+    }
+
+}
+
+
+/* ==========================================================
+   LANDSCAPE MOBILE
+========================================================== */
+
+@media (max-width:900px) and (orientation:landscape) {
+
+    .memory-overlay {
+
+        padding:
+            8px;
+
+    }
+
+
+    .memory-card {
+
+        width:
+            94vw;
+
+        max-width:
+            850px;
+
+        max-height:
+            calc(
+                100svh - 16px
+            );
+
+        flex-direction:
+            row;
+
+        gap:
+            clamp(
+                12px,
+                3vw,
+                25px
+            );
+
+        padding:
+            14px;
+
+        padding-right:
+            48px;
+
+    }
+
+
+    .memory-left {
+
+        width:
+            45%;
+
+        max-height:
+            calc(
+                100svh - 40px
+            );
+
+    }
+
+
+    .memory-left img {
+
+        max-width:
+            42vw;
+
+        max-height:
+            calc(
+                100svh - 50px
+            );
+
+    }
+
+
+    .sticky-note {
+
+        width:
+            42%;
+
+        max-height:
+            calc(
+                100svh - 50px
+            );
+
+        padding:
+            16px;
+
+    }
+
+
+    .sticky-note h2 {
+
+        font-size:
+            clamp(
+                1.1rem,
+                4vh,
+                1.6rem
+            );
+
+    }
+
+
+    .sticky-note p {
+
+        font-size:
+            clamp(
+                .8rem,
+                2.5vh,
+                1rem
+            );
+
+        line-height:
+            1.4;
+
+    }
+
+
+    .sticky-note span {
+
+        font-size:
+            1rem;
+
+    }
+
+
+    .close-btn {
+
+        top:
+            8px;
+
+        right:
+            8px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .close-btn {
+
+        transition:
+            none;
+
+    }
 
 }

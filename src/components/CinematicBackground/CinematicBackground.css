@@ -261,10 +261,10 @@ width:180px;
 height:650px;
 }
 
-.stage-floor{
+/* .stage-floor{
 height:350px;
 bottom:-34%;
-}
+} */
 
 .piano-placeholder{
 width:260px;
@@ -883,13 +883,13 @@ transform:translateX(-50%);
 
 
 
-.stage-floor{
+/* .stage-floor{
 
 height:250px;
 
 bottom:-12%;
 
-}
+} */
 
 .center-glow{
 
@@ -932,12 +932,12 @@ bottom:110px;
 
 
 
-.stage-floor{
+/* .stage-floor{
 
-    width:260px;
-    height:60px;
+     height: 235px;
+      width: 306px;
 
-}
+} */
 
 .stage-shadow{
 
@@ -1038,7 +1038,9 @@ bottom:110px;
 
     .stage-floor{
 
-        height:500px;
+                height: 529px;
+        width: 412px;
+        bottom: -18%;
 
     }
 
@@ -1109,13 +1111,13 @@ bottom:110px;
 
     
 
-    .stage-floor{
+    /* .stage-floor{
 
         height:280px;
 
         bottom:-15%;
 
-    }
+    } */
 
     .stage-shadow{
 
@@ -1188,11 +1190,11 @@ bottom:110px;
 
     }
 
-    .stage-floor{
+    /* .stage-floor{
 
         height:220px;
 
-    }
+    } */
 
     .stage-shadow{
 
@@ -1487,4 +1489,29 @@ button,
 a,
 input {
     pointer-events:auto;
+}
+
+@media (max-width: 430px){
+
+.piano-area{
+
+    align-items:flex-end;
+
+    padding-bottom: 95px;
+
+}
+}
+
+@media (max-width: 480px) {
+    .stage-floor {
+        width: 456px;
+        height: 460px;
+        bottom: -17%;
+    }
+}
+
+@media (max-width: 375px) {
+    .stage-floor {
+        bottom: -24%;
+    }
 }

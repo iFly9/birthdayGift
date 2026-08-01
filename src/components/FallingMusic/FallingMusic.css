@@ -1,80 +1,328 @@
-.music-rain{
+/* ==========================================================
+   FALLING MUSIC
+   Premium Cinematic Music Rain
+========================================================== */
 
-    position:fixed;
+.music-rain {
 
-    inset:0;
+    position: fixed;
 
-    overflow:hidden;
+    inset: 0;
 
-    pointer-events:none;
+    width: 100%;
+    height: 100%;
 
-    z-index:1;
-}
+    overflow: hidden;
 
-/* Each Instrument */
+    pointer-events: none;
 
-.music-item{
-
-    position:absolute;
-
-    top:-120px;
-
-    animation:fall 3s linear infinite;
-
-   filter:none;
-
-    user-select:none;
-
-    will-change:transform;
-}
-
-/* Falling Animation */
-
-@keyframes fall{
-
-0%{
-
-    transform:
-        translateY(-150px)
-        rotate(0deg)
-        translateX(0);
+    z-index: 1;
 
 }
 
-25%{
 
-    transform:
-        translateY(30vh)
-        rotate(80deg)
-        translateX(-20px);
+/* ==========================================================
+   MUSIC ITEM
+========================================================== */
+
+.music-item {
+
+    position: absolute;
+
+    top: -120px;
+
+    /*
+       IMPORTANT
+
+       Do NOT put:
+
+       animation: fall 3s ...
+
+       here.
+
+       Duration and delay are controlled
+       individually from JSX.
+    */
+
+    animation-name: fall;
+
+    animation-timing-function: linear;
+
+    animation-iteration-count: infinite;
+
+    user-select: none;
+
+    will-change: transform;
+
+    white-space: nowrap;
+
+
+    /* Soft golden musical glow */
+
+    filter:
+
+        drop-shadow(
+            0 0 5px
+            rgba(255,215,100,.85)
+        )
+
+        drop-shadow(
+            0 0 12px
+            rgba(255,215,100,.35)
+        );
 
 }
 
-50%{
 
-    transform:
-        translateY(60vh)
-        rotate(180deg)
-        translateX(25px);
+/* ==========================================================
+   FALLING ANIMATION
+========================================================== */
+
+@keyframes fall {
+
+    /* Start */
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                -120px,
+                0
+            )
+            rotate(0deg);
+
+    }
+
+
+    /* First movement */
+
+    20% {
+
+        transform:
+            translate3d(
+                12px,
+                20vh,
+                0
+            )
+            rotate(70deg);
+
+    }
+
+
+    /* Middle */
+
+    40% {
+
+        transform:
+            translate3d(
+                -15px,
+                40vh,
+                0
+            )
+            rotate(140deg);
+
+    }
+
+
+    /* Lower middle */
+
+    60% {
+
+        transform:
+            translate3d(
+                15px,
+                60vh,
+                0
+            )
+            rotate(210deg);
+
+    }
+
+
+    /* Almost bottom */
+
+    80% {
+
+        transform:
+            translate3d(
+                -10px,
+                80vh,
+                0
+            )
+            rotate(290deg);
+
+    }
+
+
+    /* Exit screen */
+
+    100% {
+
+        transform:
+            translate3d(
+                10px,
+                120vh,
+                0
+            )
+            rotate(360deg);
+
+    }
 
 }
 
-75%{
 
-    transform:
-        translateY(90vh)
-        rotate(280deg)
-        translateX(-15px);
+/* ==========================================================
+   LARGE DESKTOP
+========================================================== */
+
+@media (min-width: 1441px) {
+
+    .music-item {
+
+        filter:
+
+            drop-shadow(
+                0 0 6px
+                rgba(255,215,100,.9)
+            )
+
+            drop-shadow(
+                0 0 15px
+                rgba(255,215,100,.4)
+            );
+
+    }
 
 }
 
-100%{
 
-    transform:
-        translateY(120vh)
-        rotate(360deg)
-        translateX(20px);
+/* ==========================================================
+   LAPTOP
+========================================================== */
+
+@media (max-width: 1440px) {
+
+    .music-item {
+
+        filter:
+
+            drop-shadow(
+                0 0 5px
+                rgba(255,215,100,.8)
+            )
+
+            drop-shadow(
+                0 0 10px
+                rgba(255,215,100,.3)
+            );
+
+    }
 
 }
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media (max-width: 1024px) {
+
+    .music-item {
+
+        filter:
+
+            drop-shadow(
+                0 0 4px
+                rgba(255,215,100,.8)
+            )
+
+            drop-shadow(
+                0 0 9px
+                rgba(255,215,100,.3)
+            );
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .music-item {
+
+        /*
+           Slightly smaller on mobile
+           so the screen doesn't become crowded.
+        */
+
+        filter:
+
+            drop-shadow(
+                0 0 4px
+                rgba(255,215,100,.75)
+            )
+
+            drop-shadow(
+                0 0 8px
+                rgba(255,215,100,.28)
+            );
+
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 480px) {
+
+    .music-item {
+
+        filter:
+
+            drop-shadow(
+                0 0 3px
+                rgba(255,215,100,.7)
+            )
+
+            drop-shadow(
+                0 0 7px
+                rgba(255,215,100,.25)
+            );
+
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONES
+   iPhone SE / Smaller screens
+========================================================== */
+
+@media (max-width: 375px) {
+
+    .music-item {
+
+        filter:
+
+            drop-shadow(
+                0 0 3px
+                rgba(255,215,100,.65)
+            )
+
+            drop-shadow(
+                0 0 6px
+                rgba(255,215,100,.2)
+            );
+
+    }
 
 }
