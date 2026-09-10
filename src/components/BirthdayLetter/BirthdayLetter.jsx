@@ -58,11 +58,7 @@ export default function BirthdayLetter({ onContinue })  {
         <div className="divider"></div>
 
         <p className="greeting">
-<<<<<<< HEAD
-          Dear My Best Friend,
-=======
           Dear Mr Raghav,
->>>>>>> 95be8bd (changes)
         </p>
 
         <p>
@@ -79,11 +75,8 @@ export default function BirthdayLetter({ onContinue })  {
         </p>
 
         <p>
-<<<<<<< HEAD
-=======
           I know you're Mad,  but still some things we need to be honest about 😜.
           <br/>
->>>>>>> 95be8bd (changes)
           Thank you for inspiring everyone around you,
           not only through music,
           but through your kindness,
