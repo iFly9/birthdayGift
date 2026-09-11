@@ -112,7 +112,6 @@ export const memories = [
     with all the happpiness in the world .
     And let's live together for 70 years,
     healthy and happily ,if possible 100.
-     let's explore the world and have fun together.No Kathi figures
-     are allowed 👀.gothaitha idiot👀.`
+     let's explore the world and have fun together.gothaitha idiot👀.`
   }
 ];
